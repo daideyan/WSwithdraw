@@ -17,10 +17,11 @@ def dashboard
 end
 
 def withdraw
+	render :layout => "business"
 end
 
 def confirm
-
+	render :layout => "business"
 end
 
 def page3

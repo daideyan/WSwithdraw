@@ -2,5 +2,12 @@
 
 body{
 	font-family: FuturaBT-Book,sans-serif;
-    font-weight: 300 !important;
+    font-weight: 300;
+}
+
+@media (min-width: 800px){
+.side-nav-present .content-adjacent-to-side-nav>div {
+    width: 100%;
+    min-height: 1000px;
+}
 }
