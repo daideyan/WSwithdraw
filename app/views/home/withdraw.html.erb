@@ -4,22 +4,30 @@
 
 	<div class="form-box">
 		<div class="form-input">
-			<input class="form-full", placeholder="Choose Account">
-			</input>
-		</div>
-
-		<div class="form-input">
+		<label class="checkbox-container base-padding-bottom ng-binding" style="    float: left;
+    margin-right: 20px;">
+        <div class="checkbox-fancy checked" style="position: relative;"><input type="checkbox" name="email_updates" ng-model="user.email_updates" class="ng-pristine ng-untouched ng-valid ng-not-empty" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+        TFSA - $12,849.49
+      </label>
+		<label class="checkbox-container base-padding-bottom ng-binding" style="    float: left;
+    margin-right: 20px;">
+        <div class="checkbox-fancy" style="position: relative;"><input type="checkbox" name="email_updates" ng-model="user.email_updates" class="ng-untouched ng-valid ng-empty ng-dirty ng-valid-parse" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+        RRSP - $60,456.00
+      </label>
+      <div class="col-3">
+      <select class="form-control size-sm ng-pristine ng-valid ng-touched" name="frequency" ng-model="fundingRequest.frequency">
+        <option value="monthly" selected="">Choose Account</option>
+        <option value="every_other_week">CIBC Checking ****7756</option>
+        <option value="weekly">RBC Saving ****4782</option>
+      </select>
+    </div>
 			<input class="form-full", placeholder="Amount to withdraw">
 			</input>
 		</div>
-		<h2>You will receive a confirmation email upon submission. Withdrawals can take up to 2-5 business days to process</h2>
 
+		<h2>You will receive a confirmation email upon submission. Withdrawals can take up to 2-5 business days to process</h2>
 		<div class="form-input">
-			<input class="form-full", placeholder="yourbusiness.wealthsimple.com">
-			</input>
-		</div>
-		<div class="form-input">
-			<%= link_to "Save", page3_path, class: "submit-Btn2" %>
+			<%= link_to "Submit Request", page3_path, class: "submit-Btn2" %>
 		</div>
 	</div>
 
