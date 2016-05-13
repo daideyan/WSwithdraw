@@ -53,7 +53,6 @@
   <!-- ngIf: portfolio.id === nav.currentPortfolio.id -->
 </li><!-- end ngRepeat: portfolio in portfolios -->
 </ng-include>
-<a ng-repeat="link in nav.sideLinks" ng-href="/app/settings" class="ng-binding ng-scope" href="/app/settings">Withdraw</a>
     <!-- ngRepeat: link in nav.sideLinks --><a ng-repeat="link in nav.sideLinks" ng-href="/app/settings" class="ng-binding ng-scope" href="/app/settings">Settings</a><!-- end ngRepeat: link in nav.sideLinks --><a ng-repeat="link in nav.sideLinks" ng-href="http://help.wealthsimple.com/hc/en-us" class="ng-binding ng-scope" href="http://help.wealthsimple.com/hc/en-us">FAQ</a><!-- end ngRepeat: link in nav.sideLinks --><a ng-repeat="link in nav.sideLinks" ng-href="/logout" class="ng-binding ng-scope" href="/logout">Log out</a><!-- end ngRepeat: link in nav.sideLinks -->
   </div><!-- end ngIf: user.id -->
   <!-- ngIf: !user.id -->
@@ -106,6 +105,7 @@
   </ul>
   <ul class="nav other-content">
     <!-- ngRepeat: link in nav.sideLinks --><li ng-repeat="link in nav.sideLinks" class="ng-scope">
+    <%= link_to "Withdraw", withdraw_path, :class => "ng-binding" %>
       <a ng-href="/app/settings" target="" ng-class="{active: link.url == nav.currentUrl}" class="ng-binding" href="/app/settings">Settings</a>
     </li><!-- end ngRepeat: link in nav.sideLinks --><li ng-repeat="link in nav.sideLinks" class="ng-scope">
       <a ng-href="http://help.wealthsimple.com/hc/en-us" target="" ng-class="{active: link.url == nav.currentUrl}" class="ng-binding" href="http://help.wealthsimple.com/hc/en-us">FAQ</a>

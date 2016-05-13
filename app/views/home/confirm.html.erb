@@ -1,0 +1,459 @@
+<div ui-view="" class="ng-scope"><!-- ngIf: user --><div ng-if="user" ng-class="[{'side-nav-present': nav.showSideNav, 'side-nav-hidden': !nav.showSideNav, 'no-footer': !nav.showFooter}, 'logged-in', nav.bodyClass.controllerClass, nav.bodyClass.actionClass]" class="ng-scope side-nav-present logged-in portfolios" style="">
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/top/top-nav.html'" class="ng-scope"><nav class="main-nav ng-scope">
+  <div ng-class="{'container-fluid-padded': nav.showSideNav, 'container-padded': !nav.showSideNav}" class="container-fluid-padded">
+    <a ng-href="/" class="main-nav-logo" href="/">Wealthsimple</a>
+    <!-- ngIf: user.id --><!-- ngInclude: undefined --><ng-include src="'core/ws/partials/top/logged-in.html'" ng-if="user.id" class="ng-scope"><ul class="main-nav-navigation-items show-md ng-scope">
+  <!-- ngRepeat: link in nav.loggedInLinks --><li class="main-nav-navigation-item ng-scope" ng-repeat="link in nav.loggedInLinks">
+    <a ng-href="/app/referrals" ng-class="link.clazz" target="" class="ng-binding button primary-action" href="/app/referrals">Invite friends</a>
+  </li><!-- end ngRepeat: link in nav.loggedInLinks -->
+</ul>
+</ng-include><!-- end ngIf: user.id -->
+    <!-- ngIf: !user.id -->
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/top/hamburger.html'" class="ng-scope"><a class="main-nav-hamburger hamburger-icon hide-md ng-scope" data-hamburger-action="open">
+  <div class="hamburger-icon-lines">
+    <div class="hamburger-icon-line"></div>
+    <div class="hamburger-icon-line"></div>
+    <div class="hamburger-icon-line"></div>
+  </div>
+</a>
+<div class="hamburger-menu ng-scope">
+  <div class="hamburger-button-close" data-hamburger-action="close"></div>
+  <!-- ngIf: user.id --><div class="hamburger-menu-items ng-scope" ng-if="user.id">
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/side/side-nav-portfolios.html'" class="ng-scope"><!-- ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/tfsa-8r-jo_-3" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding active">TFSA</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id --><ul class="nav portfolio ng-scope" ng-if="portfolio.id === nav.currentPortfolio.id">
+    <li ng-show="portfolio.funded || (portfolio.contribution_instructions_eligible &amp;&amp; portfolio.application_completed)" class="">
+      <a ng-href="/app/portfolios/tfsa-8r-jo_-3/performance" ng-class="['performance', {active: nav.sideLinkClasses.performance}]" href="/app/portfolios/tfsa-8r-jo_-3/performance" class="performance active">Performance</a>
+    </li>
+    <li ng-show="portfolio.has_activities" class="">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/activities" ng-class="['activity', {active: nav.sideLinkClasses.activity}]" href="/portfolios/tfsa-8r-jo_-3/activities" class="activity">Activity</a>
+    </li>
+    <li ng-show="portfolio.funding_instructions_eligible" class="">
+      <!-- ngIf: portfolio.funding_instructions_eligible --><a ng-href="/portfolios/tfsa-8r-jo_-3/fundings" ng-if="portfolio.funding_instructions_eligible" ng-class="['add-funds', {active: nav.sideLinkClasses.addFunds}]" class="ng-scope add-funds" href="/portfolios/tfsa-8r-jo_-3/fundings">Add funds</a><!-- end ngIf: portfolio.funding_instructions_eligible -->
+    </li>
+    <li ng-show="!portfolio.application_completed &amp;&amp; !portfolio.paper_application_in_progress" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/application" ng-class="['application', {active: nav.sideLinkClasses.application}]" href="/portfolios/tfsa-8r-jo_-3/application" class="application">Application</a>
+    </li>
+    <li ng-show="!portfolio.application_completed &amp;&amp; portfolio.paper_application_in_progress" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/paper-application" ng-class="['application', {active: nav.sideLinkClasses.application}]" href="/portfolios/tfsa-8r-jo_-3/paper-application" class="application">Application</a>
+    </li>
+    <li ng-show="portfolio.contribution_instructions_eligible" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/contributions" ng-class="['plan', {active: nav.sideLinkClasses.contribution}]" href="/portfolios/tfsa-8r-jo_-3/contributions" class="plan">Set contribution</a>
+    </li>
+    <li>
+      <a ng-href="/app/portfolios/tfsa-8r-jo_-3/plan" ng-class="['plan', {active: nav.sideLinkClasses.plan}]" href="/app/portfolios/tfsa-8r-jo_-3/plan" class="plan">Plan</a>
+    </li>
+  </ul><!-- end ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/rrsp-r03q3gmg" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding">RRSP</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios -->
+</ng-include>
+<a ng-repeat="link in nav.sideLinks" ng-href="/app/settings" class="ng-binding ng-scope" href="/app/settings">Withdraw</a>
+    <!-- ngRepeat: link in nav.sideLinks --><a ng-repeat="link in nav.sideLinks" ng-href="/app/settings" class="ng-binding ng-scope" href="/app/settings">Settings</a><!-- end ngRepeat: link in nav.sideLinks --><a ng-repeat="link in nav.sideLinks" ng-href="http://help.wealthsimple.com/hc/en-us" class="ng-binding ng-scope" href="http://help.wealthsimple.com/hc/en-us">FAQ</a><!-- end ngRepeat: link in nav.sideLinks --><a ng-repeat="link in nav.sideLinks" ng-href="/logout" class="ng-binding ng-scope" href="/logout">Log out</a><!-- end ngRepeat: link in nav.sideLinks -->
+  </div><!-- end ngIf: user.id -->
+  <!-- ngIf: !user.id -->
+</div>
+</ng-include>
+  </div>
+</nav>
+</ng-include>
+  <div class="content-and-side-nav">
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/side/side-nav.html'" ng-show="nav.showSideNav" class="ng-scope"><div class="side-nav ng-scope">
+  <ul class="nav">
+    <!-- ngInclude: undefined --><ng-include src="'common/advisor-badge/advisor-badge.html'" class="ng-scope"><!-- ngIf: w4a.id -->
+</ng-include>
+  </ul>
+  <ul class="nav portfolios">
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/side/side-nav-portfolios.html'" class="ng-scope"><!-- ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/tfsa-8r-jo_-3" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding active">TFSA</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id --><ul class="nav portfolio ng-scope" ng-if="portfolio.id === nav.currentPortfolio.id">
+    <li ng-show="portfolio.funded || (portfolio.contribution_instructions_eligible &amp;&amp; portfolio.application_completed)" class="">
+      <a ng-href="/app/portfolios/tfsa-8r-jo_-3/performance" ng-class="['performance', {active: nav.sideLinkClasses.performance}]" href="/app/portfolios/tfsa-8r-jo_-3/performance" class="performance active">Performance</a>
+    </li>
+    <li ng-show="portfolio.has_activities" class="">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/activities" ng-class="['activity', {active: nav.sideLinkClasses.activity}]" href="/portfolios/tfsa-8r-jo_-3/activities" class="activity">Activity</a>
+    </li>
+    <li ng-show="portfolio.funding_instructions_eligible" class="">
+      <!-- ngIf: portfolio.funding_instructions_eligible --><a ng-href="/portfolios/tfsa-8r-jo_-3/fundings" ng-if="portfolio.funding_instructions_eligible" ng-class="['add-funds', {active: nav.sideLinkClasses.addFunds}]" class="ng-scope add-funds" href="/portfolios/tfsa-8r-jo_-3/fundings">Add funds</a><!-- end ngIf: portfolio.funding_instructions_eligible -->
+    </li>
+    <li ng-show="!portfolio.application_completed &amp;&amp; !portfolio.paper_application_in_progress" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/application" ng-class="['application', {active: nav.sideLinkClasses.application}]" href="/portfolios/tfsa-8r-jo_-3/application" class="application">Application</a>
+    </li>
+    <li ng-show="!portfolio.application_completed &amp;&amp; portfolio.paper_application_in_progress" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/paper-application" ng-class="['application', {active: nav.sideLinkClasses.application}]" href="/portfolios/tfsa-8r-jo_-3/paper-application" class="application">Application</a>
+    </li>
+    <li ng-show="portfolio.contribution_instructions_eligible" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/contributions" ng-class="['plan', {active: nav.sideLinkClasses.contribution}]" href="/portfolios/tfsa-8r-jo_-3/contributions" class="plan">Set contribution</a>
+    </li>
+    <li>
+      <a ng-href="/app/portfolios/tfsa-8r-jo_-3/plan" ng-class="['plan', {active: nav.sideLinkClasses.plan}]" href="/app/portfolios/tfsa-8r-jo_-3/plan" class="plan">Plan</a>
+    </li>
+  </ul><!-- end ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/rrsp-r03q3gmg" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding">RRSP</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios -->
+</ng-include>
+  </ul>
+  <ul class="nav other-content">
+    <!-- ngRepeat: link in nav.sideLinks --><li ng-repeat="link in nav.sideLinks" class="ng-scope">
+<%= link_to "Withdraw", withdraw_path, :class => "ng-binding" %>
+      <a ng-href="/app/settings" target="" ng-class="{active: link.url == nav.currentUrl}" class="ng-binding" href="/app/settings">Settings</a>
+    </li><!-- end ngRepeat: link in nav.sideLinks --><li ng-repeat="link in nav.sideLinks" class="ng-scope">
+      <a ng-href="http://help.wealthsimple.com/hc/en-us" target="" ng-class="{active: link.url == nav.currentUrl}" class="ng-binding" href="http://help.wealthsimple.com/hc/en-us">FAQ</a>
+    </li><!-- end ngRepeat: link in nav.sideLinks --><li ng-repeat="link in nav.sideLinks" class="ng-scope">
+      <a ng-href="/logout" target="" ng-class="{active: link.url == nav.currentUrl}" class="ng-binding" href="/logout">Log out</a>
+    </li><!-- end ngRepeat: link in nav.sideLinks -->
+  </ul>
+  <div class="contact">
+    <div class="header">Questions?</div>
+    <p><a ng-href="tel:+18555108948" class="ng-binding" href="tel:+18555108948">+1 (855) 510-8948</a></p>
+    <p><a ng-href="http://help.wealthsimple.com/hc/en-us/requests/new" target="_blank" href="http://help.wealthsimple.com/hc/en-us/requests/new">Submit a request</a></p>
+  </div>
+</div>
+</ng-include>
+    <div class="content-adjacent-to-side-nav">
+      <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/flash.html'" class="ng-scope">
+</ng-include>
+      <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/notifications.html'" class="ng-scope"></ng-include>
+      <!-- uiView:  -->
+<div ui-view="" class="main-content ng-scope">
+
+<div class="main-content"><div ng-controller="WS.FundingController" class="ng-scope">
+<div alert-box="" ng-model="alert" class="ng-pristine ng-untouched ng-valid ng-isolate-scope"><div ng-show="alert" role="alert" ng-class="{
+       'alert': true,
+       'alert-dismisable': true,
+       'alert-success': true,
+       'alert-info': (alert.type == 'info'),
+       'alert-warning': (alert.type == 'warning'),
+       'alert-danger': (alert.type == 'danger')
+      }" class="ng-hide alert alert-dismisable alert-success">
+    <div class="container-fluid ng-binding" ng-bind-html="alert.message">Your Withdrawal request has been received. Withdrawals can take 2-5 business days to appear in your bank account</div>
+</div>
+</div></div>
+</div>
+<!-- ngInclude: 'funding/eft-section.html' --><div ng-show="portfolio.eft_eligible" ng-include="'funding/eft-section.html'" class="ng-scope"><div class="row-md funding-method-container ng-scope">
+
+  <div class="col-3">
+    <h4 class="inline-header-md">Electronic funds transfers</h4>
+  </div>
+
+  <div class="col-9">
+    <p>
+      This is the fastest and easiest way to transfer and start investing your funds. Enter the amount and frequency of contributions below to start a new transfer.
+    </p>
+
+    <!-- ngInclude: 'funding/eft-form.html' --><div ng-include="'funding/eft-form.html'" class="ng-scope"><form name="fundingForm" ng-submit="submit(fundingForm)" novalidate="" class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-parse">
+  <div class="row-sm form-row">
+    <div class="col-3">
+      <input class="form-input-text size-sm ng-pristine ng-invalid ng-invalid-required ng-touched" type="text" name="amount" placeholder="$0" ng-model="fundingRequest.amount" money="" required="" min-value="1" max-value="1000000" focus="" autocomplete="off">
+      <!-- ngIf: fundingForm.amount.$dirty -->
+    </div>
+    <div class="col-3">
+      <select class="form-control size-sm ng-pristine ng-valid ng-touched" name="frequency" ng-model="fundingRequest.frequency">
+        <option value="monthly" selected="">Every month</option>
+        <option value="every_other_week">Every two weeks</option>
+        <option value="weekly">Every week</option>
+        <option value="once">Just this once</option>
+      </select>
+    </div>
+    <div class="col-3 ng-hide" ng-hide="fundingRequest.frequency === 'once'">
+      <datepicker date-format="MMM d, yyyy" date-min-limit="Thu May 12 2016 00:13:23 GMT-0400 (EDT)" date-max-limit="Sat May 13 2017 00:13:23 GMT-0400 (EDT)" date-set="Fri May 13 2016 00:13:23 GMT-0400 (EDT)" date-typer="true" class="ng-isolate-scope">
+        <input class="form-input-text size-sm ng-untouched ng-valid ng-dirty ng-valid-parse" name="start_state" ng-model="fundingRequest.startDate" placeholder="Start date" type="text" readonly=""><div class="_720kb-datepicker-calendar   " ng-blur="hideCalendar()"><div class="_720kb-datepicker-calendar-header"><div class="_720kb-datepicker-calendar-header-left"><a class="_720kb-datepicker-calendar-month-button _720kb-datepicker-item-hidden" href="javascript:void(0)" ng-class="{'_720kb-datepicker-item-hidden': !willPrevMonthBeSelectable()}" ng-click="prevMonth()" title="Prev"><b class="_720kb-datepicker-default-button">⟨</b></a></div><div class="_720kb-datepicker-calendar-header-middle _720kb-datepicker-calendar-month ng-binding">May&nbsp;<a href="javascript:void(0)" ng-click="paginateYears(year); showYearsPagination = !showYearsPagination;"><span class="ng-binding">2016<i ng-class="{'_720kb-datepicker-calendar-header-closed-pagination': !showYearsPagination, '_720kb-datepicker-calendar-header-opened-pagination': showYearsPagination}" class="_720kb-datepicker-calendar-header-closed-pagination"></i></span></a></div><div class="_720kb-datepicker-calendar-header-right"><a class="_720kb-datepicker-calendar-month-button" ng-class="{'_720kb-datepicker-item-hidden': !willNextMonthBeSelectable()}" href="javascript:void(0)" ng-click="nextMonth()" title="Next"><b class="_720kb-datepicker-default-button">⟩</b></a></div></div><div class="_720kb-datepicker-calendar-header ng-hide" ng-show="showYearsPagination"><div class="_720kb-datepicker-calendar-years-pagination"><!-- ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2007</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2008</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2009</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2010</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2011</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2012</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2013</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2014</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2015</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-active">2016</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope">2017</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2018</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2019</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2020</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2021</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2022</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2023</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2024</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2025</a><!-- end ngRepeat: y in paginationYears track by $index --><a ng-class="{'_720kb-datepicker-active': y === year, '_720kb-datepicker-disabled': !isSelectableMaxYear(y) || !isSelectableMinYear(y)}" href="javascript:void(0)" ng-click="setNewYear(y)" ng-repeat="y in paginationYears track by $index" class="ng-binding ng-scope _720kb-datepicker-disabled">2026</a><!-- end ngRepeat: y in paginationYears track by $index --></div><div class="_720kb-datepicker-calendar-years-pagination-pages"><a href="javascript:void(0)" ng-click="paginateYears(paginationYears[0])" ng-class="{'_720kb-datepicker-item-hidden': paginationYearsPrevDisabled}" class="_720kb-datepicker-item-hidden"><b class="_720kb-datepicker-default-button">⟨</b></a><a href="javascript:void(0)" ng-click="paginateYears(paginationYears[paginationYears.length -1 ])" ng-class="{'_720kb-datepicker-item-hidden': paginationYearsNextDisabled}" class="_720kb-datepicker-item-hidden"><b class="_720kb-datepicker-default-button">⟩</b></a></div></div><div class="_720kb-datepicker-calendar-days-header"><!-- ngRepeat: d in daysInString --><div ng-repeat="d in daysInString" class="ng-binding ng-scope">Sun</div><!-- end ngRepeat: d in daysInString --><div ng-repeat="d in daysInString" class="ng-binding ng-scope">Mon</div><!-- end ngRepeat: d in daysInString --><div ng-repeat="d in daysInString" class="ng-binding ng-scope">Tue</div><!-- end ngRepeat: d in daysInString --><div ng-repeat="d in daysInString" class="ng-binding ng-scope">Wed</div><!-- end ngRepeat: d in daysInString --><div ng-repeat="d in daysInString" class="ng-binding ng-scope">Thu</div><!-- end ngRepeat: d in daysInString --><div ng-repeat="d in daysInString" class="ng-binding ng-scope">Fri</div><!-- end ngRepeat: d in daysInString --><div ng-repeat="d in daysInString" class="ng-binding ng-scope">Sat</div><!-- end ngRepeat: d in daysInString --></div><div class="_720kb-datepicker-calendar-body"><!-- ngRepeat: px in prevMonthDays --><!-- ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">1</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">2</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">3</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">4</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">5</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">6</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">7</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">8</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">9</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">10</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">11</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-disabled">12</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope _720kb-datepicker-active">13</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">14</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">15</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">16</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">17</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">18</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">19</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">20</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">21</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">22</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">23</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">24</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">25</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">26</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">27</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">28</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">29</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">30</a><!-- end ngRepeat: item in days --><a href="javascript:void(0)" ng-repeat="item in days" ng-click="setDatepickerDay(item)" ng-class="{'_720kb-datepicker-active': day === item, '_720kb-datepicker-disabled': !isSelectableMinDate(year + '/' + monthNumber + '/' + item ) || !isSelectableMaxDate(year + '/' + monthNumber + '/' + item) || !isSelectableDate(monthNumber, year, item)}" class="_720kb-datepicker-calendar-day ng-binding ng-scope">31</a><!-- end ngRepeat: item in days --><!-- ngRepeat: nx in nextMonthDays --><a href="javascript:void(0)" ng-repeat="nx in nextMonthDays" class="_720kb-datepicker-calendar-day _720kb-datepicker-disabled ng-binding ng-scope">1</a><!-- end ngRepeat: nx in nextMonthDays --><a href="javascript:void(0)" ng-repeat="nx in nextMonthDays" class="_720kb-datepicker-calendar-day _720kb-datepicker-disabled ng-binding ng-scope">2</a><!-- end ngRepeat: nx in nextMonthDays --><a href="javascript:void(0)" ng-repeat="nx in nextMonthDays" class="_720kb-datepicker-calendar-day _720kb-datepicker-disabled ng-binding ng-scope">3</a><!-- end ngRepeat: nx in nextMonthDays --><a href="javascript:void(0)" ng-repeat="nx in nextMonthDays" class="_720kb-datepicker-calendar-day _720kb-datepicker-disabled ng-binding ng-scope">4</a><!-- end ngRepeat: nx in nextMonthDays --></div></div>
+      </datepicker>
+    </div>
+    <div class="col-3">
+      <button class="button primary-action size-md ng-binding" type="submit" ng-disabled="fundingForm.$invalid || fundingForm.submitting" disabled="disabled"> Submit </button>
+    </div>
+  </div>
+</form></div>
+
+    <table class="table-opaque" ng-show="efts.length > 0 || pacs.length > 0">
+      <thead>
+        <tr>
+          <th class="status-column"></th>
+          <th>Creation Date</th>
+          <th>From</th>
+          <th>Amount</th>
+          <th>Frequency</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ngRepeat: pac in pacs -->
+        <!-- ngRepeat: eft in efts --><tr ng-repeat="eft in efts" class="ng-scope">
+          <td ng-class="['status-column', eft.status_category]" class="status-column success">
+          </td>
+          <td class="ng-binding">Apr 17, 2016</td>
+          <td class="ng-binding">CIBC</td>
+          <td class="ng-binding">$100</td>
+          <td>One time</td>
+          <td class="ng-binding">Processed</td>
+          <td>
+            <a href="#" ng-show="eft.is_cancellable &amp;&amp; !eft.cancelling" ng-click="$event.preventDefault(); cancelEft(eft)" class="ng-hide">Cancel</a>
+            <span ng-show="eft.cancelling" class="ng-hide">Cancelling...</span>
+          </td>
+        </tr><!-- end ngRepeat: eft in efts --><tr ng-repeat="eft in efts" class="ng-scope">
+          <td ng-class="['status-column', eft.status_category]" class="status-column success">
+          </td>
+          <td class="ng-binding">Mar 16, 2016</td>
+          <td class="ng-binding">CIBC</td>
+          <td class="ng-binding">$50</td>
+          <td>One time</td>
+          <td class="ng-binding">Processed</td>
+          <td>
+            <a href="#" ng-show="eft.is_cancellable &amp;&amp; !eft.cancelling" ng-click="$event.preventDefault(); cancelEft(eft)" class="ng-hide">Cancel</a>
+            <span ng-show="eft.cancelling" class="ng-hide">Cancelling...</span>
+          </td>
+        </tr><!-- end ngRepeat: eft in efts --><tr ng-repeat="eft in efts" class="ng-scope">
+          <td ng-class="['status-column', eft.status_category]" class="status-column success">
+          </td>
+          <td class="ng-binding">Mar 15, 2016</td>
+          <td class="ng-binding">CIBC</td>
+          <td class="ng-binding">$50</td>
+          <td>One time</td>
+          <td class="ng-binding">Processed</td>
+          <td>
+            <a href="#" ng-show="eft.is_cancellable &amp;&amp; !eft.cancelling" ng-click="$event.preventDefault(); cancelEft(eft)" class="ng-hide">Cancel</a>
+            <span ng-show="eft.cancelling" class="ng-hide">Cancelling...</span>
+          </td>
+        </tr><!-- end ngRepeat: eft in efts -->
+      </tbody>
+    </table>
+
+    <!-- ngInclude: 'funding/promo-section.html' --><div ng-include="'funding/promo-section.html'" class="ng-scope"><div class="promo-section ng-scope ng-hide" ng-show="viewData.eftsAndPacsLoaded &amp;&amp; userPromos.length > 0 &amp;&amp; efts.length === 0 &amp;&amp; pacs.length === 0">
+  <!-- TODO: eventually build a UI to handle multiple promos per user -->
+  <p class="promo-message ng-binding"></p>
+</div></div>
+  </div>
+</div></div>
+<div ng-show="!viewData.anyBankAccountsRequireDocuments" class="ng-scope">
+  <!-- ngInclude: 'funding/bank-account-section.html' --><div ng-include="'funding/bank-account-section.html'" class="ng-scope"><div class="row-md funding-method-container ng-scope" data-ng-show="viewData.bankAccountsLoaded">
+
+  <div class="col-3">
+    <h4 class="inline-header-md ng-hide" data-ng-show="bankAccounts.length == 0">Verify your bank account</h4>
+    <h4 class="inline-header-md" data-ng-show="bankAccounts.length > 0">Bank accounts</h4>
+  </div>
+
+  <div class="col-9">
+
+    <div ng-show="bankAccounts.length == 0" class="ng-hide">
+      <p ng-show="portfolio.account_type == 'non_registered'" class="ng-hide">
+        In order to start trading your investments, we need to verify your bank account. You can do this by uploading your bank statement, a screenshot of your bank account, or an image of a cleared cheque. Please make sure you <b>full name</b>, <b>account number</b>, and <b>total account balance</b> are clearly visible!
+      </p>
+      <p ng-show="portfolio.account_type != 'non_registered'">
+        In order to start trading your investments, we need to verify your bank account. You can do this by uploading your bank statement, a screenshot of your bank account, or an image of a void cheque. Please make sure you <b>full name</b> and <b>account number</b> are clearly visible!
+      </p>
+      <a href="/uploads/new?type=bank_statement&amp;redirect_to=%2Fportfolios%2Ftfsa-8r-jo_-3%2Ffundings" ng-href="/uploads/new?type=bank_statement&amp;redirect_to=%2Fportfolios%2Ftfsa-8r-jo_-3%2Ffundings" class="button primary-action">Upload bank verification</a>
+    </div>
+
+    <div data-ng-show="bankAccounts.length > 0" class="">
+      <p>
+        Wealthsimple investment accounts can accept fund transfers from bank accounts that are in your name and that have been verified by our compliance department. Here's what we have on file for you:
+      </p>
+
+      <table class="table-opaque">
+        <thead>
+          <tr>
+            <th class="status-column"></th>
+            <th>Bank</th>
+            <th>Institution</th>
+            <th>Transit</th>
+            <th>Account</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ngRepeat: bankAccount in bankAccounts --><tr ng-repeat="bankAccount in bankAccounts" class="ng-scope">
+            <td ng-class="['status-column', bankAccount.status_category]" class="status-column success"></td>
+            <td class="ng-binding">CIBC</td>
+            <td class="ng-binding">010</td>
+            <td class="ng-binding">***4582</td>
+            <td class="ng-binding">***8698</td>
+            <td ng-switch="bankAccount.status">
+              <!-- ngSwitchWhen: verified --><span ng-switch-when="verified" class="ng-scope">Verified</span><!-- end ngSwitchWhen: -->
+              <!-- ngSwitchWhen: document_required -->
+              <!-- ngSwitchDefault:  -->
+            </td>
+          </tr><!-- end ngRepeat: bankAccount in bankAccounts -->
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div></div>
+</div>
+<!-- ngInclude: 'funding/transfer-section.html' --><div ng-include="'funding/transfer-section.html'" class="ng-scope"><div class="row-md funding-method-container ng-scope">
+  <div class="col-3">
+    <h4 class="inline-header-md">Transfer existing accounts</h4>
+  </div>
+  <div class="col-9">
+    <p class="ng-binding">
+      If you already have a TFSA account with another financial institution, you can transfer it to Wealthsimple.
+    </p>
+    <!-- ngIf: !transfers -->
+    <!-- ngIf: transfers --><table ng-if="transfers" class="table-opaque ng-scope">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Institution</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ngRepeat: transfer in transfers -->
+      </tbody>
+    </table><!-- end ngIf: transfers -->
+    <!-- ngIf: transfers --><p ng-if="transfers" class="ng-scope">
+      <a href="/app/portfolios/tfsa-8r-jo_-3/transfer/new" class="table-link">+ Set up transfer</a>
+    </p><!-- end ngIf: transfers -->
+  </div>
+</div></div></div>
+</div>
+</div>
+</div>
+
+
+
+    </div>
+  </div>
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer.html'" ng-show="nav.showFooter" class="ng-scope"><footer class="container-gray main-footer ng-scope">
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer-upper-block.html'" class="ng-scope"><div class="container footer-upper-block ng-scope">
+  <div class="footer-content">
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Invest</li>
+        <li><a ng-href="https://www.wealthsimple.com/why-invest" target="_blank" class="footer-link" href="https://www.wealthsimple.com/why-invest">Why invest</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/how-it-works" target="_blank" class="footer-link" href="https://www.wealthsimple.com/how-it-works">How it works</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/investing-101" target="_blank" class="footer-link" href="https://www.wealthsimple.com/investing-101">Investing 101</a></li>
+        <li><a ng-href="http://help.wealthsimple.com/hc/en-us" target="_blank" class="footer-link" href="http://help.wealthsimple.com/hc/en-us">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>About us</li>
+        <li><a ng-href="https://www.wealthsimple.com/mission" target="_blank" class="footer-link" href="https://www.wealthsimple.com/mission">Our mission</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/team" target="_blank" class="footer-link" href="https://www.wealthsimple.com/team">Our team</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/jobs" target="_blank" class="footer-link" href="https://www.wealthsimple.com/jobs">Jobs</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/press" target="_blank" class="footer-link" href="https://www.wealthsimple.com/press">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Legal</li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/terms" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/terms">Terms of use</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/privacy" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/privacy">Privacy policy</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/disclosure" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/disclosure">Full disclosure</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/file-complaint" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/file-complaint">File a complaint</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Learn more</li>
+        <li><a ng-href="http://grow.wealthsimple.com/" class="footer-link" target="_blank" href="http://grow.wealthsimple.com/">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Download the app</li>
+        <li class="app-badge">
+          <a ng-href="https://itunes.apple.com/ca/app/wealthsimple/id948087968?ls=1&amp;mt=8" class="footer-link" target="_blank" href="https://itunes.apple.com/ca/app/wealthsimple/id948087968?ls=1&amp;mt=8">
+            <img ws-src="icons/ios-badge.svg" alt="Download from the App Store" src="https://wealthsimple-ui.s3.amazonaws.com/images/icons/ios-badge.svg">
+          </a>
+        </li>
+        <li class="app-badge">
+          <a ng-href="https://play.google.com/store/apps/details?id=com.wealthsimple" class="footer-link" target="_blank" href="https://play.google.com/store/apps/details?id=com.wealthsimple">
+            <img ws-src="icons/google-play-badge.svg" alt="Get it on Google Play" src="https://wealthsimple-ui.s3.amazonaws.com/images/icons/google-play-badge.svg">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</ng-include>
+  <div class="footer-divider"></div>
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer-lower-block.html'" class="ng-scope"><div class="container footer-lower-block ng-scope">
+  <div class="footer-content">
+    <div class="footer-list-wrapper footer-list-wrapper-contact">
+      <ul class="footer-list">
+        <li>Contact us</li>
+        <li class="footer-list-item-faded">
+          <a href="tel:+18555108948" class="footer-link ng-binding">+1 (855) 510-8948</a>
+        </li>
+        <li class="footer-list-item-faded">
+          <a href="mailto:support@wealthsimple.com" class="footer-link ng-binding">support@wealthsimple.com</a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper footer-list-wrapper-contact-address">
+      <ul class="footer-list">
+        <li>&nbsp;</li>
+        <li class="footer-list-item-faded ng-binding">860 Richmond Street West, 3rd floor</li>
+        <li class="footer-list-item-faded ng-binding">Toronto, ON, M6J 1C9, Canada</li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Language</li>
+        <li>English</li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Social</li>
+        <li class="footer-social-icon">
+          <a ng-href="https://www.facebook.com/wealthsimple" class="footer-link" target="_blank" href="https://www.facebook.com/wealthsimple">
+            <i class="ss-icon">facebook</i>
+          </a>
+        </li>
+        <li class="footer-social-icon">
+          <a ng-href="https://twitter.com/wealthsimple" class="footer-link" target="_blank" href="https://twitter.com/wealthsimple">
+            <i class="ss-icon">twitter</i>
+          </a>
+        </li>
+        <li class="footer-social-icon">
+          <a ng-href="https://www.linkedin.com/company/wealthsimple" class="footer-link" target="_blank" href="https://www.linkedin.com/company/wealthsimple">
+            <i class="ss-icon">linkedin</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer-copyright.html'" class="ng-scope"><div class="footer-content footer-copyright ng-scope">
+  <p class="ng-binding">
+    Wealthsimple Financial Inc. is registered as a Portfolio Manager in
+    Ontario, British Columbia, Alberta, Manitoba, Quebec, Saskatchewan,
+    Newfoundland and Labrador, New Brunswick, Nova Scotia, Prince Edward Island,
+    the Northwest Territories, Nunavut, and Yukon. Securities in your account are
+    protected up to $1,000,000 CDN through our brokerage partner, BBS-Securities Inc.
+    See <a ng-href="http://www.cipf.ca/public/cipfcoverage/coveragepolicy.aspx" target="_blank" rel="nofollow" href="http://www.cipf.ca/public/cipfcoverage/coveragepolicy.aspx">www.cipf.ca</a>
+    for more details. By using this website, you accept our Terms of Use and
+    Privacy Policy. Copyright 2016 Wealthsimple Financial Inc.
+  </p>
+  <p>
+    Past performance is no guarantee of future results. Any historical returns,
+    expected returns, or probability projections may not reflect actual future
+    performance. All securities involve risk and may result in loss. We do not
+    provide financial planning services to individual investors. Read our
+    <a ng-href="https://www.wealthsimple.com/legal/disclosure" target="_blank" href="https://www.wealthsimple.com/legal/disclosure">Full disclosure</a>.
+  </p>
+</div>
+</ng-include>
+</div>
+</ng-include>
+</footer>
+</ng-include>
+</div><!-- end ngIf: user -->
+</div>
