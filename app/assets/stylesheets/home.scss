@@ -1,0 +1,113 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.template-container{
+	background: -webkit-linear-gradient(left top, rgb(247,107,29), rgb(250,217,97));
+    position: absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    overflow:hidden;
+    z-index: -100;
+}
+
+.profile-content{
+	width: 620px;
+	min-height: 450px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: white;
+	border-radius: 4px;
+	margin-top: 80px;
+	padding: 10px 20px 30px 10px;
+
+}
+
+.profile-image{
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	margin-top: -60px;
+	position:relative;
+	margin-right: auto;
+	margin-left: auto;
+	border: 3px solid white;
+	background-image: url(https://dl.dropbox.com/s/aw74w50pdu35ckt/download.JPG?dl=0);
+	background-size: cover;
+	background-position-x: -32px;
+}
+
+.profile-name{
+	text-align: center;
+	font-weight: 100;
+	margin-top: 25px;
+	font-size: 24px;
+}
+
+.profile-bio{
+	color: #666;
+	width: 412px;
+	margin-top: 30px;	
+	margin-right: auto;
+	margin-left: auto;
+	line-height: 30px;
+}
+
+.profile-linkbar{
+	width: 100%;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.profile-link1{
+	margin-top: 20px;
+	background: #fab131;
+	color: white;
+	padding: 16px 30px 17px 30px;
+	font-weight: 300;
+	line-height: 1;
+	border-radius: 40px;
+	width: 241px;
+	border: 0;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	cursor: pointer;
+}
+
+.profile-link2{
+	margin-top: 20px;
+	border: 1px solid #fab131;
+	color: #fab131;
+	padding: 16px 30px 17px 30px;
+	font-weight: 300;
+	line-height: 1;
+	border-radius: 40px;
+	width: 201px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.navbar3{
+	width: 100%;
+	height: 103px;
+	padding-top: 30px;
+	padding-bottom: 24px;
+	border-bottom: 1px solid #ebebeb;
+	position: absolute;
+}
+
+.profile-logo{
+	text-align: center;
+	width: 412px;
+	display: inline-block;
+	margin-top: 20px;
+	line-height: 45px;
+	font-size: 24px;
+	font-family: "caslongrad";
+	letter-spacing: -0.8px;
+	color: #C4C4C4 !important;
+}

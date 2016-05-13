@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wealthsimple</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
+
+
+
+<div class="container-padded">
+	<div class="navbar2">
+
+		<%= link_to Wealthsimple, root_path, class: "nav-logo" %>
+
+		<div class="nav-pullright">
+			<div class="navigation-item">
+				<div class="button-yellow">
+					Get started
+				</div>
+			</div>
+
+			<div class="main-nav-navigation-item">
+				Sign in
+			</div>
+
+			<div class="main-nav-navigation-item">
+				How it works
+			</div>
+
+			<div class="main-nav-navigation-item">
+				Why invest
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<body>
+
+<%= yield %>
+
+</body>
+
+</html>
