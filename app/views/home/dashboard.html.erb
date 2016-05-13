@@ -1,0 +1,537 @@
+<div ui-view="" class="ng-scope"><!-- ngIf: user --><div ng-if="user" ng-class="[{'side-nav-present': nav.showSideNav, 'side-nav-hidden': !nav.showSideNav, 'no-footer': !nav.showFooter}, 'logged-in', nav.bodyClass.controllerClass, nav.bodyClass.actionClass]" class="ng-scope side-nav-present logged-in portfolios" style="">
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/top/top-nav.html'" class="ng-scope"><nav class="main-nav ng-scope">
+  <div ng-class="{'container-fluid-padded': nav.showSideNav, 'container-padded': !nav.showSideNav}" class="container-fluid-padded">
+    <a ng-href="/" class="main-nav-logo" href="/">Wealthsimple</a>
+    <!-- ngIf: user.id --><!-- ngInclude: undefined --><ng-include src="'core/ws/partials/top/logged-in.html'" ng-if="user.id" class="ng-scope"><ul class="main-nav-navigation-items show-md ng-scope">
+  <!-- ngRepeat: link in nav.loggedInLinks --><li class="main-nav-navigation-item ng-scope" ng-repeat="link in nav.loggedInLinks">
+    <a ng-href="/app/referrals" ng-class="link.clazz" target="" class="ng-binding button primary-action" href="/app/referrals">Invite friends</a>
+  </li><!-- end ngRepeat: link in nav.loggedInLinks -->
+</ul>
+</ng-include><!-- end ngIf: user.id -->
+    <!-- ngIf: !user.id -->
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/top/hamburger.html'" class="ng-scope"><a class="main-nav-hamburger hamburger-icon hide-md ng-scope" data-hamburger-action="open">
+  <div class="hamburger-icon-lines">
+    <div class="hamburger-icon-line"></div>
+    <div class="hamburger-icon-line"></div>
+    <div class="hamburger-icon-line"></div>
+  </div>
+</a>
+<div class="hamburger-menu ng-scope">
+  <div class="hamburger-button-close" data-hamburger-action="close"></div>
+  <!-- ngIf: user.id --><div class="hamburger-menu-items ng-scope" ng-if="user.id">
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/side/side-nav-portfolios.html'" class="ng-scope"><!-- ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/tfsa-8r-jo_-3" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding active">TFSA</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id --><ul class="nav portfolio ng-scope" ng-if="portfolio.id === nav.currentPortfolio.id">
+    <li ng-show="portfolio.funded || (portfolio.contribution_instructions_eligible &amp;&amp; portfolio.application_completed)" class="">
+      <a ng-href="/app/portfolios/tfsa-8r-jo_-3/performance" ng-class="['performance', {active: nav.sideLinkClasses.performance}]" href="/app/portfolios/tfsa-8r-jo_-3/performance" class="performance active">Performance</a>
+    </li>
+    <li ng-show="portfolio.has_activities" class="">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/activities" ng-class="['activity', {active: nav.sideLinkClasses.activity}]" href="/portfolios/tfsa-8r-jo_-3/activities" class="activity">Activity</a>
+    </li>
+    <li ng-show="portfolio.funding_instructions_eligible" class="">
+      <!-- ngIf: portfolio.funding_instructions_eligible --><a ng-href="/portfolios/tfsa-8r-jo_-3/fundings" ng-if="portfolio.funding_instructions_eligible" ng-class="['add-funds', {active: nav.sideLinkClasses.addFunds}]" class="ng-scope add-funds" href="/portfolios/tfsa-8r-jo_-3/fundings">Add funds</a><!-- end ngIf: portfolio.funding_instructions_eligible -->
+    </li>
+    <li ng-show="!portfolio.application_completed &amp;&amp; !portfolio.paper_application_in_progress" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/application" ng-class="['application', {active: nav.sideLinkClasses.application}]" href="/portfolios/tfsa-8r-jo_-3/application" class="application">Application</a>
+    </li>
+    <li ng-show="!portfolio.application_completed &amp;&amp; portfolio.paper_application_in_progress" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/paper-application" ng-class="['application', {active: nav.sideLinkClasses.application}]" href="/portfolios/tfsa-8r-jo_-3/paper-application" class="application">Application</a>
+    </li>
+    <li ng-show="portfolio.contribution_instructions_eligible" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/contributions" ng-class="['plan', {active: nav.sideLinkClasses.contribution}]" href="/portfolios/tfsa-8r-jo_-3/contributions" class="plan">Set contribution</a>
+    </li>
+    <li>
+      <a ng-href="/app/portfolios/tfsa-8r-jo_-3/plan" ng-class="['plan', {active: nav.sideLinkClasses.plan}]" href="/app/portfolios/tfsa-8r-jo_-3/plan" class="plan">Plan</a>
+    </li>
+  </ul><!-- end ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/rrsp-r03q3gmg" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding">RRSP</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios -->
+</ng-include>
+<a ng-repeat="link in nav.sideLinks" ng-href="/app/settings" class="ng-binding ng-scope" href="/app/settings">Withdraw</a>
+    <!-- ngRepeat: link in nav.sideLinks --><a ng-repeat="link in nav.sideLinks" ng-href="/app/settings" class="ng-binding ng-scope" href="/app/settings">Settings</a><!-- end ngRepeat: link in nav.sideLinks --><a ng-repeat="link in nav.sideLinks" ng-href="http://help.wealthsimple.com/hc/en-us" class="ng-binding ng-scope" href="http://help.wealthsimple.com/hc/en-us">FAQ</a><!-- end ngRepeat: link in nav.sideLinks --><a ng-repeat="link in nav.sideLinks" ng-href="/logout" class="ng-binding ng-scope" href="/logout">Log out</a><!-- end ngRepeat: link in nav.sideLinks -->
+  </div><!-- end ngIf: user.id -->
+  <!-- ngIf: !user.id -->
+</div>
+</ng-include>
+  </div>
+</nav>
+</ng-include>
+  <div class="content-and-side-nav">
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/side/side-nav.html'" ng-show="nav.showSideNav" class="ng-scope"><div class="side-nav ng-scope">
+  <ul class="nav">
+    <!-- ngInclude: undefined --><ng-include src="'common/advisor-badge/advisor-badge.html'" class="ng-scope"><!-- ngIf: w4a.id -->
+</ng-include>
+  </ul>
+  <ul class="nav portfolios">
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/side/side-nav-portfolios.html'" class="ng-scope"><!-- ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/tfsa-8r-jo_-3" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding active">TFSA</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id --><ul class="nav portfolio ng-scope" ng-if="portfolio.id === nav.currentPortfolio.id">
+    <li ng-show="portfolio.funded || (portfolio.contribution_instructions_eligible &amp;&amp; portfolio.application_completed)" class="">
+      <a ng-href="/app/portfolios/tfsa-8r-jo_-3/performance" ng-class="['performance', {active: nav.sideLinkClasses.performance}]" href="/app/portfolios/tfsa-8r-jo_-3/performance" class="performance active">Performance</a>
+    </li>
+    <li ng-show="portfolio.has_activities" class="">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/activities" ng-class="['activity', {active: nav.sideLinkClasses.activity}]" href="/portfolios/tfsa-8r-jo_-3/activities" class="activity">Activity</a>
+    </li>
+    <li ng-show="portfolio.funding_instructions_eligible" class="">
+      <!-- ngIf: portfolio.funding_instructions_eligible --><a ng-href="/portfolios/tfsa-8r-jo_-3/fundings" ng-if="portfolio.funding_instructions_eligible" ng-class="['add-funds', {active: nav.sideLinkClasses.addFunds}]" class="ng-scope add-funds" href="/portfolios/tfsa-8r-jo_-3/fundings">Add funds</a><!-- end ngIf: portfolio.funding_instructions_eligible -->
+    </li>
+    <li ng-show="!portfolio.application_completed &amp;&amp; !portfolio.paper_application_in_progress" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/application" ng-class="['application', {active: nav.sideLinkClasses.application}]" href="/portfolios/tfsa-8r-jo_-3/application" class="application">Application</a>
+    </li>
+    <li ng-show="!portfolio.application_completed &amp;&amp; portfolio.paper_application_in_progress" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/paper-application" ng-class="['application', {active: nav.sideLinkClasses.application}]" href="/portfolios/tfsa-8r-jo_-3/paper-application" class="application">Application</a>
+    </li>
+    <li ng-show="portfolio.contribution_instructions_eligible" class="ng-hide">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/contributions" ng-class="['plan', {active: nav.sideLinkClasses.contribution}]" href="/portfolios/tfsa-8r-jo_-3/contributions" class="plan">Set contribution</a>
+    </li>
+    <li>
+      <a ng-href="/app/portfolios/tfsa-8r-jo_-3/plan" ng-class="['plan', {active: nav.sideLinkClasses.plan}]" href="/app/portfolios/tfsa-8r-jo_-3/plan" class="plan">Plan</a>
+    </li>
+  </ul><!-- end ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/rrsp-r03q3gmg" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding">RRSP</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios -->
+</ng-include>
+  </ul>
+  <ul class="nav other-content">
+    <!-- ngRepeat: link in nav.sideLinks --><li ng-repeat="link in nav.sideLinks" class="ng-scope">
+      <a ng-href="/app/settings" target="" ng-class="{active: link.url == nav.currentUrl}" class="ng-binding" href="/app/settings">Settings</a>
+    </li><!-- end ngRepeat: link in nav.sideLinks --><li ng-repeat="link in nav.sideLinks" class="ng-scope">
+      <a ng-href="http://help.wealthsimple.com/hc/en-us" target="" ng-class="{active: link.url == nav.currentUrl}" class="ng-binding" href="http://help.wealthsimple.com/hc/en-us">FAQ</a>
+    </li><!-- end ngRepeat: link in nav.sideLinks --><li ng-repeat="link in nav.sideLinks" class="ng-scope">
+      <a ng-href="/logout" target="" ng-class="{active: link.url == nav.currentUrl}" class="ng-binding" href="/logout">Log out</a>
+    </li><!-- end ngRepeat: link in nav.sideLinks -->
+  </ul>
+  <div class="contact">
+    <div class="header">Questions?</div>
+    <p><a ng-href="tel:+18555108948" class="ng-binding" href="tel:+18555108948">+1 (855) 510-8948</a></p>
+    <p><a ng-href="http://help.wealthsimple.com/hc/en-us/requests/new" target="_blank" href="http://help.wealthsimple.com/hc/en-us/requests/new">Submit a request</a></p>
+  </div>
+</div>
+</ng-include>
+    <div class="content-adjacent-to-side-nav">
+      <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/flash.html'" class="ng-scope">
+</ng-include>
+      <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/notifications.html'" class="ng-scope"></ng-include>
+      <!-- uiView:  --><div ui-view="" class="main-content ng-scope"><!-- uiView:  --><div ui-view="" class="ng-scope"><div ng-show="nav.currentPortfolio" class="portfolios-show ng-scope">
+  <div ng-show="nav.currentPortfolio.invested_funds" class="">
+    <div class="portfolio-numbers-container">
+      <div class="portfolio-number value">
+        <div class="header ng-binding">
+          Total portfolio value
+        </div>
+        <div class="number numeric ng-binding">
+          $123,021.37
+        </div>
+      </div>
+      <div class="portfolio-number returns">
+        <div class="header ng-binding">
+          Total returns
+        </div>
+        <div class="number numeric ng-binding up text-green" ng-class="{'up text-green': nav.currentPortfolio.money_return > 0,
+                                               'down text-gray': nav.currentPortfolio.money_return < 0}">
+          $11234.37
+        </div>
+      </div>
+    </div>
+    <div id="performance-graph" config="performanceChartConfig" ng-show="performanceChartReady" c2cf="" class="ng-isolate-scope" data-highcharts-chart="2" style=""><div class="highcharts-container" id="highcharts-6" style="position: relative; overflow: hidden; width: 827px; height: 330px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="827" height="330"><desc>Created with Highcharts 4.2.3</desc><defs><clipPath id="highcharts-7"><rect x="0" y="0" width="764" height="300"></rect></clipPath><linearGradient x1="0" y1="0" x2="0" y2="1" id="highcharts-8"><stop offset="0" stop-color="rgb(124,183,182)" stop-opacity="0.2"></stop><stop offset="1" stop-color="rgb(124,183,182)" stop-opacity="0.2"></stop></linearGradient></defs><rect x="0" y="0" width="827" height="330" fill="#FFFFFF" class=" highcharts-background"></rect><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"><path fill="none" d="M 53 310.5 L 817 310.5" stroke="transparent" stroke-width="1" zIndex="1" opacity="1"></path><path fill="none" d="M 53 250.5 L 817 250.5" stroke="transparent" stroke-width="1" zIndex="1" opacity="1"></path><path fill="none" d="M 53 190.5 L 817 190.5" stroke="transparent" stroke-width="1" zIndex="1" opacity="1"></path><path fill="none" d="M 53 130.5 L 817 130.5" stroke="transparent" stroke-width="1" zIndex="1" opacity="1"></path><path fill="none" d="M 53 70.5 L 817 70.5" stroke="transparent" stroke-width="1" zIndex="1" opacity="1"></path><path fill="none" d="M 53 9.5 L 817 9.5" stroke="transparent" stroke-width="1" zIndex="1" opacity="1"></path></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-series-group" zIndex="3"><path fill="#7cb7b6" fill-opacity="0.25" zIndex="-1" d="M 0 0"></path><g class="highcharts-series highcharts-series-0" zIndex="0.1" transform="translate(53,10) scale(1 1)" clip-path="url(https://my.wealthsimple.com/app/portfolios/tfsa-8r-jo_-3/performance#highcharts-7)"><path fill="url(https://my.wealthsimple.com/app/portfolios/tfsa-8r-jo_-3/performance#highcharts-8)" d="M 7.490196078431373 240 L 20.404327248140635 180 L 33.318458417849904 181.2 L 46.23258958755916 181.2 L 59.146720757268426 181.2 L 72.06085192697769 181.2 L 84.97498309668696 181.2 L 97.88911426639622 181.2 L 110.80324543610548 182.4 L 123.71737660581475 182.4 L 136.631507775524 182.4 L 149.54563894523326 182.4 L 162.45977011494253 181.2 L 175.3739012846518 181.2 L 188.28803245436106 181.2 L 201.20216362407032 181.2 L 214.1162947937796 181.2 L 227.03042596348885 181.2 L 239.94455713319812 181.2 L 252.85868830290738 181.2 L 265.7728194726167 182.4 L 278.68695064232594 181.2 L 291.60108181203515 182.4 L 304.5152129817444 181.2 L 317.4293441514537 181.2 L 330.34347532116294 181.2 L 343.2576064908722 181.2 L 356.17173766058147 181.2 L 369.08586883029074 180 L 382 180 L 394.91413116970926 180 L 407.82826233941853 180 L 420.7423935091278 60 L 433.65652467883706 60 L 446.5706558485463 58.80000000000001 L 459.4847870182556 58.80000000000001 L 472.39891818796485 60 L 485.3130493576741 60 L 498.2271805273834 60 L 511.14131169709265 60 L 524.055442866802 60 L 536.9695740365112 60 L 549.8837052062205 60 L 562.7978363759297 61.20000000000002 L 575.711967545639 61.20000000000002 L 588.6260987153482 61.20000000000002 L 601.5402298850576 61.20000000000002 L 614.4543610547668 61.20000000000002 L 627.3684922244761 62.400000000000006 L 640.2826233941853 62.400000000000006 L 653.1967545638946 62.400000000000006 L 666.1108857336038 61.20000000000002 L 679.0250169033131 61.20000000000002 L 691.9391480730224 61.20000000000002 L 704.8532792427316 61.20000000000002 L 717.7674104124409 58.80000000000001 L 730.6815415821501 60 L 743.5956727518594 60 L 756.5098039215686 60 L 756.5098039215686 300 L 743.5956727518594 300 L 730.6815415821501 300 L 717.7674104124409 300 L 704.8532792427316 300 L 691.9391480730224 300 L 679.0250169033131 300 L 666.1108857336038 300 L 653.1967545638946 300 L 640.2826233941853 300 L 627.3684922244761 300 L 614.4543610547668 300 L 601.5402298850576 300 L 588.6260987153482 300 L 575.711967545639 300 L 562.7978363759297 300 L 549.8837052062205 300 L 536.9695740365112 300 L 524.055442866802 300 L 511.14131169709265 300 L 498.2271805273834 300 L 485.3130493576741 300 L 472.39891818796485 300 L 459.4847870182556 300 L 446.5706558485463 300 L 433.65652467883706 300 L 420.7423935091278 300 L 407.82826233941853 300 L 394.91413116970926 300 L 382 300 L 369.08586883029074 300 L 356.17173766058147 300 L 343.2576064908722 300 L 330.34347532116294 300 L 317.4293441514537 300 L 304.5152129817444 300 L 291.60108181203515 300 L 278.68695064232594 300 L 265.7728194726167 300 L 252.85868830290738 300 L 239.94455713319812 300 L 227.03042596348885 300 L 214.1162947937796 300 L 201.20216362407032 300 L 188.28803245436106 300 L 175.3739012846518 300 L 162.45977011494253 300 L 149.54563894523326 300 L 136.631507775524 300 L 123.71737660581475 300 L 110.80324543610548 300 L 97.88911426639622 300 L 84.97498309668696 300 L 72.06085192697769 300 L 59.146720757268426 300 L 46.23258958755916 300 L 33.318458417849904 300 L 20.404327248140635 300 L 7.490196078431373 300" zIndex="0"></path><path fill="none" d="M 7.490196078431373 240 L 20.404327248140635 180 L 33.318458417849904 181.2 L 46.23258958755916 181.2 L 59.146720757268426 181.2 L 72.06085192697769 181.2 L 84.97498309668696 181.2 L 97.88911426639622 181.2 L 110.80324543610548 182.4 L 123.71737660581475 182.4 L 136.631507775524 182.4 L 149.54563894523326 182.4 L 162.45977011494253 181.2 L 175.3739012846518 181.2 L 188.28803245436106 181.2 L 201.20216362407032 181.2 L 214.1162947937796 181.2 L 227.03042596348885 181.2 L 239.94455713319812 181.2 L 252.85868830290738 181.2 L 265.7728194726167 182.4 L 278.68695064232594 181.2 L 291.60108181203515 182.4 L 304.5152129817444 181.2 L 317.4293441514537 181.2 L 330.34347532116294 181.2 L 343.2576064908722 181.2 L 356.17173766058147 181.2 L 369.08586883029074 180 L 382 180 L 394.91413116970926 180 L 407.82826233941853 180 L 420.7423935091278 60 L 433.65652467883706 60 L 446.5706558485463 58.80000000000001 L 459.4847870182556 58.80000000000001 L 472.39891818796485 60 L 485.3130493576741 60 L 498.2271805273834 60 L 511.14131169709265 60 L 524.055442866802 60 L 536.9695740365112 60 L 549.8837052062205 60 L 562.7978363759297 61.20000000000002 L 575.711967545639 61.20000000000002 L 588.6260987153482 61.20000000000002 L 601.5402298850576 61.20000000000002 L 614.4543610547668 61.20000000000002 L 627.3684922244761 62.400000000000006 L 640.2826233941853 62.400000000000006 L 653.1967545638946 62.400000000000006 L 666.1108857336038 61.20000000000002 L 679.0250169033131 61.20000000000002 L 691.9391480730224 61.20000000000002 L 704.8532792427316 61.20000000000002 L 717.7674104124409 58.80000000000001 L 730.6815415821501 60 L 743.5956727518594 60 L 756.5098039215686 60" stroke="#7cb7b6" stroke-width="1" zIndex="1" stroke-linejoin="round" stroke-linecap="round"></path><path fill="none" d="M -2.5098039215686274 240 L 7.490196078431373 240 L 20.404327248140635 180 L 33.318458417849904 181.2 L 46.23258958755916 181.2 L 59.146720757268426 181.2 L 72.06085192697769 181.2 L 84.97498309668696 181.2 L 97.88911426639622 181.2 L 110.80324543610548 182.4 L 123.71737660581475 182.4 L 136.631507775524 182.4 L 149.54563894523326 182.4 L 162.45977011494253 181.2 L 175.3739012846518 181.2 L 188.28803245436106 181.2 L 201.20216362407032 181.2 L 214.1162947937796 181.2 L 227.03042596348885 181.2 L 239.94455713319812 181.2 L 252.85868830290738 181.2 L 265.7728194726167 182.4 L 278.68695064232594 181.2 L 291.60108181203515 182.4 L 304.5152129817444 181.2 L 317.4293441514537 181.2 L 330.34347532116294 181.2 L 343.2576064908722 181.2 L 356.17173766058147 181.2 L 369.08586883029074 180 L 382 180 L 394.91413116970926 180 L 407.82826233941853 180 L 420.7423935091278 60 L 433.65652467883706 60 L 446.5706558485463 58.80000000000001 L 459.4847870182556 58.80000000000001 L 472.39891818796485 60 L 485.3130493576741 60 L 498.2271805273834 60 L 511.14131169709265 60 L 524.055442866802 60 L 536.9695740365112 60 L 549.8837052062205 60 L 562.7978363759297 61.20000000000002 L 575.711967545639 61.20000000000002 L 588.6260987153482 61.20000000000002 L 601.5402298850576 61.20000000000002 L 614.4543610547668 61.20000000000002 L 627.3684922244761 62.400000000000006 L 640.2826233941853 62.400000000000006 L 653.1967545638946 62.400000000000006 L 666.1108857336038 61.20000000000002 L 679.0250169033131 61.20000000000002 L 691.9391480730224 61.20000000000002 L 704.8532792427316 61.20000000000002 L 717.7674104124409 58.80000000000001 L 730.6815415821501 60 L 743.5956727518594 60 L 756.5098039215686 60 L 766.5098039215686 60" stroke-linejoin="round" visibility="visible" stroke="rgba(192,192,192,0.0001)" stroke-width="21" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-series-0 highcharts-tracker" zIndex="0.1" transform="translate(53,10) scale(1 1)" style="" clip-path="none"><path fill="#7cb7b6" d="M 214 177.2 C 219.328 177.2 219.328 185.2 214 185.2 C 208.672 185.2 208.672 177.2 214 177.2 Z" stroke="#FFFFFF" stroke-width="1" visibility="hidden"></path></g></g><g class="highcharts-axis-labels highcharts-xaxis-labels" zIndex="7"><text x="215.45977011494253" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:99px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="329" opacity="1">3/28</text><text x="396.2576064908722" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:99px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="329" opacity="1">4/11</text><text x="577.055442866802" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:99px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="329" opacity="1">4/25</text><text x="757.8532792427316" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:99px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="329" opacity="1">5/9</text><text x="125.06085192697769" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:99px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="329" opacity="1">3/21</text><text x="305.85868830290735" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:99px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="329" opacity="1">4/4</text><text x="486.65652467883706" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:99px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="329" opacity="1">4/18</text><text x="667.4543610547668" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:99px;text-overflow:clip;" text-anchor="middle" transform="translate(0,0)" y="329" opacity="1">5/2</text></g><g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"><text x="38" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:263px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="315" opacity="1">$0</text><text x="38" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:263px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="255" opacity="1">$50</text><text x="38" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:263px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="195" opacity="1">$100</text><text x="38" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:263px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="135" opacity="1">$150</text><text x="38" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:263px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="75" opacity="1">$200</text><text x="38" style="color:#606060;cursor:default;font-size:11px;fill:#606060;width:263px;text-overflow:clip;" text-anchor="end" transform="translate(0,0)" y="15" opacity="1">$250</text></g><g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;pointer-events:none;white-space:nowrap;" transform="translate(238,-9999)" opacity="0" visibility="visible"><path fill="none" d="M 3.5 0.5 L 56.5 0.5 C 59.5 0.5 59.5 0.5 59.5 3.5 L 59.5 46.5 C 59.5 49.5 59.5 49.5 56.5 49.5 L 34.5 49.5 28.5 55.5 22.5 49.5 3.5 49.5 C 0.5 49.5 0.5 49.5 0.5 46.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)"></path><path fill="none" d="M 3.5 0.5 L 56.5 0.5 C 59.5 0.5 59.5 0.5 59.5 3.5 L 59.5 46.5 C 59.5 49.5 59.5 49.5 56.5 49.5 L 34.5 49.5 28.5 55.5 22.5 49.5 3.5 49.5 C 0.5 49.5 0.5 49.5 0.5 46.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)"></path><path fill="none" d="M 3.5 0.5 L 56.5 0.5 C 59.5 0.5 59.5 0.5 59.5 3.5 L 59.5 46.5 C 59.5 49.5 59.5 49.5 56.5 49.5 L 34.5 49.5 28.5 55.5 22.5 49.5 3.5 49.5 C 0.5 49.5 0.5 49.5 0.5 46.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)"></path><path fill="rgba(249, 249, 249, .85)" d="M 3.5 0.5 L 56.5 0.5 C 59.5 0.5 59.5 0.5 59.5 3.5 L 59.5 46.5 C 59.5 49.5 59.5 49.5 56.5 49.5 L 34.5 49.5 28.5 55.5 22.5 49.5 3.5 49.5 C 0.5 49.5 0.5 49.5 0.5 46.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5" stroke="#7cb7b6" stroke-width="1"></path><text x="8" zIndex="1" style="font-size:12px;color:#333333;fill:#333333;" y="20"><tspan style="font-size: 12px">
+    
+      April 1
+    
+    </tspan><tspan style="font-size: 15px; font-weight: bold" x="8" dy="18">
+    
+      $99
+    
+  </tspan></text></g></svg></div></div>
+  </div>
+
+  <hr class="size-lg">
+
+  <h2 class="ng-binding">Your investments</h2>
+
+  <!-- ngInclude: undefined --><ng-include src="'core/portfolios/performance/partials/investments_table.html'" class="ng-scope"><table class="investments-table table-transparent ng-scope">
+  <thead>
+    <tr>
+      <th class="asset-class-column ng-binding">Asset class</th>
+      <th class="allocation-column show-md ng-binding">Allocation</th>
+      <th>
+        <span data-tooltip="Your portfolio includes these low-cost, tax-efficient investment products. We use a combination of mutual funds and Exchange Traded Funds (ETFs) to build your portfolio." data-placement="bottom" class="ng-binding">Fund</span>
+      </th>
+      <th class="value-column show-md">
+        <span data-tooltip="Book value is the cost of purchase for an asset. It is displayed in CAD." data-placement="bottom" class="ng-binding">Book value</span>
+      </th>
+      <th class="value-column">
+        <span data-tooltip="Market value is the current value of an asset; i.e. the price an asset would fetch in the marketplace. It is displayed in CAD." data-placement="bottom" class="ng-binding">Market value</span>
+      </th>
+      <th class="return-column ng-binding">Return</th>
+    </tr><tr>
+  </tr></thead>
+  <!-- ngRepeat: group in nav.currentPortfolio.sorted_stakes_grouped_by_class --><tbody ng-repeat="group in nav.currentPortfolio.sorted_stakes_grouped_by_class" class="ng-scope">
+    <!-- ngRepeat: asset in group[1] --><tr ng-repeat="asset in group[1]" class="ng-scope">
+      <td class="asset-class-column">
+        <span data-tooltip="<div class='asset-class-tooltip'>
+        <div class='header'>Why Company Bonds?</div>
+        <div class='text'>Company Bonds are debt issued by companies with investment-grade credit ratings to fund business activities. They offer higher yields than Government Bonds.</div>
+      </div>" class="ng-binding" data-original-title="" title="">
+          Company Bonds
+        </span>
+      </td>
+      <td class="allocation-column show-md ng-binding">
+        22.3%
+      </td>
+      <td>
+        <a ng-show="asset.fund_overview" class="fund_link" ng-href="https://www.wealthsimple.com/funds/ZCS" target="_blank" href="https://www.wealthsimple.com/funds/ZCS">
+          <span ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding" data-tooltip="BMO Short Corporate Bond Index ETF">ZCS</span>
+        </a>
+        <span ng-hide="asset.fund_overview" ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding ng-hide" data-tooltip="BMO Short Corporate Bond Index ETF">ZCS</span>
+      </td>
+      <td class="value-column show-md ng-binding">$44</td>
+      <td class="value-column ng-binding">$44</td>
+      <td class="return-column ng-binding" ng-bind-html="asset.formatted_money_return_rate_percent | sanitize"><span class="value up text-green">+0.4%</span></td>
+    </tr><!-- end ngRepeat: asset in group[1] -->
+  </tbody><!-- end ngRepeat: group in nav.currentPortfolio.sorted_stakes_grouped_by_class --><tbody ng-repeat="group in nav.currentPortfolio.sorted_stakes_grouped_by_class" class="ng-scope">
+    <!-- ngRepeat: asset in group[1] --><tr ng-repeat="asset in group[1]" class="ng-scope">
+      <td class="asset-class-column">
+        <span data-tooltip="<div class='asset-class-tooltip'>
+        <div class='header'>Why Foreign Stocks?</div>
+        <div class='text'>Foreign Stocks are shares in companies based in Europe, Australia, and Asia. Historically, they’ve underperformed US stocks but reduce your risk through diversification.</div>
+      </div>" class="ng-binding">
+          Foreign Stocks
+        </span>
+      </td>
+      <td class="allocation-column show-md ng-binding">
+        17.4%
+      </td>
+      <td>
+        <a ng-show="asset.fund_overview" class="fund_link" ng-href="https://www.wealthsimple.com/funds/VEF" target="_blank" href="https://www.wealthsimple.com/funds/VEF">
+          <span ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding" data-tooltip="Vanguard FTSE Developed All Cap ex U.S. Index ETF (CAD-hedged)">VEF</span>
+        </a>
+        <span ng-hide="asset.fund_overview" ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding ng-hide" data-tooltip="Vanguard FTSE Developed All Cap ex U.S. Index ETF (CAD-hedged)">VEF</span>
+      </td>
+      <td class="value-column show-md ng-binding">$35</td>
+      <td class="value-column ng-binding">$35</td>
+      <td class="return-column ng-binding" ng-bind-html="asset.formatted_money_return_rate_percent | sanitize"><span class="value down text-gray">-1.7%</span></td>
+    </tr><!-- end ngRepeat: asset in group[1] -->
+  </tbody><!-- end ngRepeat: group in nav.currentPortfolio.sorted_stakes_grouped_by_class --><tbody ng-repeat="group in nav.currentPortfolio.sorted_stakes_grouped_by_class" class="ng-scope">
+    <!-- ngRepeat: asset in group[1] --><tr ng-repeat="asset in group[1]" class="ng-scope">
+      <td class="asset-class-column">
+        <span data-tooltip="<div class='asset-class-tooltip'>
+        <div class='header'>Why US Stocks?</div>
+        <div class='text'>U.S. Stocks are  shares in US-based companies. Historically, they are the major driver of long-term portfolio returns.</div>
+      </div>" class="ng-binding">
+          US Stocks
+        </span>
+      </td>
+      <td class="allocation-column show-md ng-binding">
+        12.4%
+      </td>
+      <td>
+        <a ng-show="asset.fund_overview" class="fund_link" ng-href="https://www.wealthsimple.com/funds/VUS" target="_blank" href="https://www.wealthsimple.com/funds/VUS">
+          <span ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding" data-tooltip="Vanguard US Total Market Index ETF (CAD-hedged)">VUS</span>
+        </a>
+        <span ng-hide="asset.fund_overview" ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding ng-hide" data-tooltip="Vanguard US Total Market Index ETF (CAD-hedged)">VUS</span>
+      </td>
+      <td class="value-column show-md ng-binding">$24</td>
+      <td class="value-column ng-binding">$24</td>
+      <td class="return-column ng-binding" ng-bind-html="asset.formatted_money_return_rate_percent | sanitize"><span class="value up text-green">+0.1%</span></td>
+    </tr><!-- end ngRepeat: asset in group[1] -->
+  </tbody><!-- end ngRepeat: group in nav.currentPortfolio.sorted_stakes_grouped_by_class --><tbody ng-repeat="group in nav.currentPortfolio.sorted_stakes_grouped_by_class" class="ng-scope">
+    <!-- ngRepeat: asset in group[1] --><tr ng-repeat="asset in group[1]" class="ng-scope">
+      <td class="asset-class-column">
+        <span data-tooltip="<div class='asset-class-tooltip'>
+        <div class='header'>Why Government Bonds?</div>
+        <div class='text'>Government Bonds are debt issued by the government to fund spending and other activities.</div>
+      </div>" class="ng-binding">
+          Government Bonds
+        </span>
+      </td>
+      <td class="allocation-column show-md ng-binding">
+        12.4%
+      </td>
+      <td>
+        <a ng-show="asset.fund_overview" class="fund_link" ng-href="https://www.wealthsimple.com/funds/ZFM" target="_blank" href="https://www.wealthsimple.com/funds/ZFM">
+          <span ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding" data-tooltip="BMO Mid Federal Bond ETF">ZFM</span>
+        </a>
+        <span ng-hide="asset.fund_overview" ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding ng-hide" data-tooltip="BMO Mid Federal Bond ETF">ZFM</span>
+      </td>
+      <td class="value-column show-md ng-binding">$24</td>
+      <td class="value-column ng-binding">$24</td>
+      <td class="return-column ng-binding" ng-bind-html="asset.formatted_money_return_rate_percent | sanitize"><span class="value up text-green">+0.6%</span></td>
+    </tr><!-- end ngRepeat: asset in group[1] -->
+  </tbody><!-- end ngRepeat: group in nav.currentPortfolio.sorted_stakes_grouped_by_class --><tbody ng-repeat="group in nav.currentPortfolio.sorted_stakes_grouped_by_class" class="ng-scope">
+    <!-- ngRepeat: asset in group[1] --><tr ng-repeat="asset in group[1]" class="ng-scope">
+      <td class="asset-class-column">
+        <span data-tooltip="<div class='asset-class-tooltip'>
+        <div class='header'>Why Real Estate?</div>
+        <div class='text'>North American real estate companies. Acts partly like stocks (capital returns) and partly like bonds (generates cash flow) and also protects against inflation.</div>
+      </div>" class="ng-binding">
+          Real Estate
+        </span>
+      </td>
+      <td class="allocation-column show-md ng-binding">
+        10.1%
+      </td>
+      <td>
+        <a ng-show="asset.fund_overview" class="fund_link" ng-href="https://www.wealthsimple.com/funds/PHR" target="_blank" href="https://www.wealthsimple.com/funds/PHR">
+          <span ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding" data-tooltip="Purpose Duration Hedged Real Estate Fund">PHR</span>
+        </a>
+        <span ng-hide="asset.fund_overview" ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding ng-hide" data-tooltip="Purpose Duration Hedged Real Estate Fund">PHR</span>
+      </td>
+      <td class="value-column show-md ng-binding">$19</td>
+      <td class="value-column ng-binding">$20</td>
+      <td class="return-column ng-binding" ng-bind-html="asset.formatted_money_return_rate_percent | sanitize"><span class="value up text-green">+2.0%</span></td>
+    </tr><!-- end ngRepeat: asset in group[1] -->
+  </tbody><!-- end ngRepeat: group in nav.currentPortfolio.sorted_stakes_grouped_by_class --><tbody ng-repeat="group in nav.currentPortfolio.sorted_stakes_grouped_by_class" class="ng-scope">
+    <!-- ngRepeat: asset in group[1] --><tr ng-repeat="asset in group[1]" class="ng-scope">
+      <td class="asset-class-column">
+        <span data-tooltip="<div class='asset-class-tooltip'>
+        <div class='header'>Why Canadian Stocks?</div>
+        <div class='text'>Canadian Stocks are shares in companies based in Canada. They are often over-represented in Canadians' portfolios, but a major part of long-term returns.</div>
+      </div>" class="ng-binding">
+          Canadian Stocks
+        </span>
+      </td>
+      <td class="allocation-column show-md ng-binding">
+        10.0%
+      </td>
+      <td>
+        <a ng-show="asset.fund_overview" class="fund_link" ng-href="https://www.wealthsimple.com/funds/XIC" target="_blank" href="https://www.wealthsimple.com/funds/XIC">
+          <span ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding" data-tooltip="iShares Capped Composite TSX Index ETF">XIC</span>
+        </a>
+        <span ng-hide="asset.fund_overview" ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding ng-hide" data-tooltip="iShares Capped Composite TSX Index ETF">XIC</span>
+      </td>
+      <td class="value-column show-md ng-binding">$20</td>
+      <td class="value-column ng-binding">$20</td>
+      <td class="return-column ng-binding" ng-bind-html="asset.formatted_money_return_rate_percent | sanitize"><span class="value up text-green">+0.4%</span></td>
+    </tr><!-- end ngRepeat: asset in group[1] -->
+  </tbody><!-- end ngRepeat: group in nav.currentPortfolio.sorted_stakes_grouped_by_class --><tbody ng-repeat="group in nav.currentPortfolio.sorted_stakes_grouped_by_class" class="ng-scope">
+    <!-- ngRepeat: asset in group[1] --><tr ng-repeat="asset in group[1]" class="ng-scope">
+      <td class="asset-class-column">
+        <span data-tooltip="<div class='asset-class-tooltip'>
+        <div class='header'>Why Dividend Stocks?</div>
+        <div class='text'>Dividend Stocks are shares of global companies that have a history of increasing dividend payouts. They tend to be large household names, and are less volatile than the broad market. In the current low interest rate environment, they represent an attractive alternative to bonds.</div>
+      </div>" class="ng-binding" data-original-title="" title="">
+          Dividend Stocks
+        </span>
+      </td>
+      <td class="allocation-column show-md ng-binding">
+        10.0%
+      </td>
+      <td>
+        <a ng-show="asset.fund_overview" class="fund_link" ng-href="https://www.wealthsimple.com/funds/PDF" target="_blank" href="https://www.wealthsimple.com/funds/PDF">
+          <span ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding" data-tooltip="Purpose Core Dividend Fund">PDF</span>
+        </a>
+        <span ng-hide="asset.fund_overview" ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding ng-hide" data-tooltip="Purpose Core Dividend Fund">PDF</span>
+      </td>
+      <td class="value-column show-md ng-binding">$20</td>
+      <td class="value-column ng-binding">$20</td>
+      <td class="return-column ng-binding" ng-bind-html="asset.formatted_money_return_rate_percent | sanitize"><span class="value down text-gray">-0.6%</span></td>
+    </tr><!-- end ngRepeat: asset in group[1] -->
+  </tbody><!-- end ngRepeat: group in nav.currentPortfolio.sorted_stakes_grouped_by_class --><tbody ng-repeat="group in nav.currentPortfolio.sorted_stakes_grouped_by_class" class="ng-scope">
+    <!-- ngRepeat: asset in group[1] --><tr ng-repeat="asset in group[1]" class="ng-scope">
+      <td class="asset-class-column">
+        <span data-tooltip="<div class='asset-class-tooltip'>
+        <div class='header'>Why High Yield Company Bonds?</div>
+        <div class='text'>High Yield Bonds are debt issued by companies to fund business activities. In the current interest rate environment, offers a relatively attractive income stream.</div>
+      </div>" class="ng-binding">
+          High Yield Company Bonds
+        </span>
+      </td>
+      <td class="allocation-column show-md ng-binding">
+        4.9%
+      </td>
+      <td>
+        <a ng-show="asset.fund_overview" class="fund_link" ng-href="https://www.wealthsimple.com/funds/ZHY" target="_blank" href="https://www.wealthsimple.com/funds/ZHY">
+          <span ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding" data-tooltip="BMO High Yield US Corporate Bond Hedged to CAD">ZHY</span>
+        </a>
+        <span ng-hide="asset.fund_overview" ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding ng-hide" data-tooltip="BMO High Yield US Corporate Bond Hedged to CAD">ZHY</span>
+      </td>
+      <td class="value-column show-md ng-binding">$9</td>
+      <td class="value-column ng-binding">$9</td>
+      <td class="return-column ng-binding" ng-bind-html="asset.formatted_money_return_rate_percent | sanitize"><span class="value up text-green">+0.1%</span></td>
+    </tr><!-- end ngRepeat: asset in group[1] -->
+  </tbody><!-- end ngRepeat: group in nav.currentPortfolio.sorted_stakes_grouped_by_class --><tbody ng-repeat="group in nav.currentPortfolio.sorted_stakes_grouped_by_class" class="ng-scope">
+    <!-- ngRepeat: asset in group[1] --><tr ng-repeat="asset in group[1]" class="ng-scope">
+      <td class="asset-class-column">
+        <span data-tooltip="<div class='asset-class-tooltip'>
+        <div class='header'>Why Cash?</div>
+        <div class='text'>We keep a small cash reserve as a buffer against price fluctuations and to cover management fees.</div>
+      </div>" class="ng-binding">
+          Cash
+        </span>
+      </td>
+      <td class="allocation-column show-md ng-binding">
+        0.2%
+      </td>
+      <td>
+        <a ng-show="asset.fund_overview" class="fund_link ng-hide" ng-href="" target="_blank">
+          <span ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding">-</span>
+        </a>
+        <span ng-hide="asset.fund_overview" ng-attr-data-tooltip="{{asset.symbol_tooltip ? asset.symbol_tooltip : undefined}}" class="ng-binding">-</span>
+      </td>
+      <td class="value-column show-md ng-binding">-</td>
+      <td class="value-column ng-binding">$0</td>
+      <td class="return-column ng-binding" ng-bind-html="asset.formatted_money_return_rate_percent | sanitize">-</td>
+    </tr><!-- end ngRepeat: asset in group[1] -->
+  </tbody><!-- end ngRepeat: group in nav.currentPortfolio.sorted_stakes_grouped_by_class -->
+  <tbody>
+    <tr>
+      <td class="table-separator-outer" colspan="100">
+        <div class="table-separator"></div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <!-- ngIf: nav.currentPortfolio.cumulative_advisory_fees <= 0 --><span ng-if="nav.currentPortfolio.cumulative_advisory_fees <= 0" class="ng-binding ng-scope">Total fees paid</span><!-- end ngIf: nav.currentPortfolio.cumulative_advisory_fees <= 0 -->
+        <!-- ngIf: nav.currentPortfolio.cumulative_advisory_fees > 0 -->
+      </td>
+      <td></td>
+      <td></td>
+      <td class="value-column ng-binding">$0.00</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table></ng-include></div>
+</div></div>
+    </div>
+  </div>
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer.html'" ng-show="nav.showFooter" class="ng-scope"><footer class="container-gray main-footer ng-scope">
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer-upper-block.html'" class="ng-scope"><div class="container footer-upper-block ng-scope">
+  <div class="footer-content">
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Invest</li>
+        <li><a ng-href="https://www.wealthsimple.com/why-invest" target="_blank" class="footer-link" href="https://www.wealthsimple.com/why-invest">Why invest</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/how-it-works" target="_blank" class="footer-link" href="https://www.wealthsimple.com/how-it-works">How it works</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/investing-101" target="_blank" class="footer-link" href="https://www.wealthsimple.com/investing-101">Investing 101</a></li>
+        <li><a ng-href="http://help.wealthsimple.com/hc/en-us" target="_blank" class="footer-link" href="http://help.wealthsimple.com/hc/en-us">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>About us</li>
+        <li><a ng-href="https://www.wealthsimple.com/mission" target="_blank" class="footer-link" href="https://www.wealthsimple.com/mission">Our mission</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/team" target="_blank" class="footer-link" href="https://www.wealthsimple.com/team">Our team</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/jobs" target="_blank" class="footer-link" href="https://www.wealthsimple.com/jobs">Jobs</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/press" target="_blank" class="footer-link" href="https://www.wealthsimple.com/press">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Legal</li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/terms" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/terms">Terms of use</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/privacy" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/privacy">Privacy policy</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/disclosure" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/disclosure">Full disclosure</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/file-complaint" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/file-complaint">File a complaint</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Learn more</li>
+        <li><a ng-href="http://grow.wealthsimple.com/" class="footer-link" target="_blank" href="http://grow.wealthsimple.com/">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Download the app</li>
+        <li class="app-badge">
+          <a ng-href="https://itunes.apple.com/ca/app/wealthsimple/id948087968?ls=1&amp;mt=8" class="footer-link" target="_blank" href="https://itunes.apple.com/ca/app/wealthsimple/id948087968?ls=1&amp;mt=8">
+            <img ws-src="icons/ios-badge.svg" alt="Download from the App Store" src="https://wealthsimple-ui.s3.amazonaws.com/images/icons/ios-badge.svg">
+          </a>
+        </li>
+        <li class="app-badge">
+          <a ng-href="https://play.google.com/store/apps/details?id=com.wealthsimple" class="footer-link" target="_blank" href="https://play.google.com/store/apps/details?id=com.wealthsimple">
+            <img ws-src="icons/google-play-badge.svg" alt="Get it on Google Play" src="https://wealthsimple-ui.s3.amazonaws.com/images/icons/google-play-badge.svg">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</ng-include>
+  <div class="footer-divider"></div>
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer-lower-block.html'" class="ng-scope"><div class="container footer-lower-block ng-scope">
+  <div class="footer-content">
+    <div class="footer-list-wrapper footer-list-wrapper-contact">
+      <ul class="footer-list">
+        <li>Contact us</li>
+        <li class="footer-list-item-faded">
+          <a href="tel:+18555108948" class="footer-link ng-binding">+1 (855) 510-8948</a>
+        </li>
+        <li class="footer-list-item-faded">
+          <a href="mailto:support@wealthsimple.com" class="footer-link ng-binding">support@wealthsimple.com</a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper footer-list-wrapper-contact-address">
+      <ul class="footer-list">
+        <li>&nbsp;</li>
+        <li class="footer-list-item-faded ng-binding">860 Richmond Street West, 3rd floor</li>
+        <li class="footer-list-item-faded ng-binding">Toronto, ON, M6J 1C9, Canada</li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Language</li>
+        <li>English</li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Social</li>
+        <li class="footer-social-icon">
+          <a ng-href="https://www.facebook.com/wealthsimple" class="footer-link" target="_blank" href="https://www.facebook.com/wealthsimple">
+            <i class="ss-icon">facebook</i>
+          </a>
+        </li>
+        <li class="footer-social-icon">
+          <a ng-href="https://twitter.com/wealthsimple" class="footer-link" target="_blank" href="https://twitter.com/wealthsimple">
+            <i class="ss-icon">twitter</i>
+          </a>
+        </li>
+        <li class="footer-social-icon">
+          <a ng-href="https://www.linkedin.com/company/wealthsimple" class="footer-link" target="_blank" href="https://www.linkedin.com/company/wealthsimple">
+            <i class="ss-icon">linkedin</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer-copyright.html'" class="ng-scope"><div class="footer-content footer-copyright ng-scope">
+  <p class="ng-binding">
+    Wealthsimple Financial Inc. is registered as a Portfolio Manager in
+    Ontario, British Columbia, Alberta, Manitoba, Quebec, Saskatchewan,
+    Newfoundland and Labrador, New Brunswick, Nova Scotia, Prince Edward Island,
+    the Northwest Territories, Nunavut, and Yukon. Securities in your account are
+    protected up to $1,000,000 CDN through our brokerage partner, BBS-Securities Inc.
+    See <a ng-href="http://www.cipf.ca/public/cipfcoverage/coveragepolicy.aspx" target="_blank" rel="nofollow" href="http://www.cipf.ca/public/cipfcoverage/coveragepolicy.aspx">www.cipf.ca</a>
+    for more details. By using this website, you accept our Terms of Use and
+    Privacy Policy. Copyright 2016 Wealthsimple Financial Inc.
+  </p>
+  <p>
+    Past performance is no guarantee of future results. Any historical returns,
+    expected returns, or probability projections may not reflect actual future
+    performance. All securities involve risk and may result in loss. We do not
+    provide financial planning services to individual investors. Read our
+    <a ng-href="https://www.wealthsimple.com/legal/disclosure" target="_blank" href="https://www.wealthsimple.com/legal/disclosure">Full disclosure</a>.
+  </p>
+</div>
+</ng-include>
+</div>
+</ng-include>
+</footer>
+</ng-include>
+</div><!-- end ngIf: user -->
+</div>

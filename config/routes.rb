@@ -8,5 +8,11 @@ get "page2" => "home#page2"
 
 get "page3" => "home#page3"
 
+get "dashboard" => "home#dashboard"
+
+get "withdraw" => "home#withdraw"
+
+get "confirm" => "home#confirm"
+
 
 end
