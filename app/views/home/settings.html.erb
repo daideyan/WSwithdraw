@@ -1,0 +1,295 @@
+<h2 class="base-margin-bottom-x4 ng-binding ng-scope">Account settings</h2>
+<!-- ngInclude: undefined --><ng-include src="'core/settings/partials/basic-info.html'" class="ng-scope"><div class="row-md ng-scope">
+  <div class="col-2">
+    <h4 class="inline-header-md ng-binding">Your info</h4>
+  </div>
+  <div class="col-10">
+    <form name="model.infoForm" class="form-inline size-sm ng-pristine ng-valid ng-valid-mask ng-valid-required" novalidate="">
+      <div class="row-md" ng-class="{ 'has-error' :  model.infoForm.given_name.$invalid || model.errors.given_name }">
+        <label for="given_name" class="col-2 control-label ng-binding">
+          First name
+        </label>
+        <div class="col-5">
+          <input type="text" name="given_name" ng-model="user.given_name" class="form-input-text size-sm ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" required="">
+          <div class="help-block ng-inactive" ng-messages="model.infoForm.given_name.$error">
+            <!-- ngMessage: required -->
+          </div>
+          <div class="help-block ng-hide" ng-show="model.errors.given_name">
+            <!-- ngRepeat: error in model.errors.given_name -->
+          </div>
+        </div>
+      </div>
+      <div class="row-md" ng-class="{ 'has-error' :  model.infoForm.surname.$invalid || model.errors.surname }">
+        <label for="surname" class="col-2 control-label ng-binding">Last name</label>
+        <div class="col-5">
+          <input type="text" name="surname" ng-model="user.surname" class="form-input-text size-sm ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" required="">
+          <div class="help-block ng-inactive" ng-messages="model.infoForm.surname.$error">
+            <!-- ngMessage: required -->
+          </div>
+          <div class="help-block ng-hide" ng-show="model.errors.surname">
+            <!-- ngRepeat: error in model.errors.surname -->
+          </div>
+        </div>
+      </div>
+      <div class="row-md" ng-class="{ 'has-error' :  model.infoForm.email.$invalid || model.errors.email }">
+        <label for="email" class="col-2 control-label ng-binding">Email</label>
+        <div class="col-5">
+          <input type="text" name="email" ng-model="user.email" class="form-input-text size-sm ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" required="">
+          <div class="help-block ng-inactive" ng-messages="model.infoForm.email.$error">
+            <!-- ngMessage: required -->
+          </div>
+          <div class="help-block ng-hide" ng-show="model.errors.email">
+            <!-- ngRepeat: error in model.errors.email -->
+          </div>
+        </div>
+      </div>
+      <div class="row-md" ng-class="{ 'has-error' :  model.infoForm.phone.$invalid || model.errors.phone }">
+        <label for="email" class="col-2 control-label ng-binding">
+          Phone
+        </label>
+        <div class="col-5">
+          <input type="text" name="phone" ng-model="user.phone" class="form-input-text size-sm ng-pristine ng-untouched ng-valid ng-valid-mask ng-not-empty ng-valid-required" required="" ui-mask="(999) 999-9999" ui-mask-placeholder="" ui-mask-placeholder-char="_" placeholder="(___) ___-____">
+          <div class="help-block ng-inactive" ng-messages="model.infoForm.phone.$error">
+            <!-- ngMessage: required -->
+          </div>
+          <div class="help-block ng-hide" ng-show="model.errors.phone">
+            <!-- ngRepeat: error in model.errors.phone -->
+          </div>
+        </div>
+      </div>
+      <div class="row-md">
+        <div class="col-2"></div>
+        <div class="col-5">
+          <button type="submit" ng-click="model.updateInfo()" ladda-button="model.submitting" data-style="slide-down" class="button primary-action size-md ladda-button ng-scope" translate="general.forms.buttons.update">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</ng-include>
+<hr class="size-lg ng-scope" c2cf="">
+<!-- ngInclude: undefined --><ng-include src="'core/settings/partials/password.html'" class="ng-scope"><div class="row-md ng-scope">
+  <div class="col-2">
+    <h4 class="inline-header-md ng-binding">Password</h4>
+  </div>
+  <div class="col-10">
+    <form name="model.passwordForm" class="form-inline size-sm ng-pristine ng-invalid ng-invalid-required ng-valid-minlength ng-valid-validator" novalidate="">
+      <div class="row-md" ng-class="{ 'has-error' : (model.passwordForm.password.$touched &amp;&amp; model.passwordForm.password.$invalid) || model.errors.password }">
+        <label for="password" class="col-2 control-label ng-binding">
+          Current password
+        </label>
+        <div class="col-5">
+          <input type="password" name="password" ng-model="model.password.password" ng-keyup="clear()" class="form-input-text size-sm ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" required="">
+          <div class="help-block ng-active ng-hide" ng-messages="model.passwordForm.password.$error" ng-show="model.passwordForm.password.$touched">
+            <!-- ngMessage: required --><p ng-message="required" class="ng-binding ng-scope">Required</p>
+          </div>
+          <div class="help-block ng-hide" ng-show="model.errors.password">
+            <!-- ngRepeat: error in model.errors.password -->
+          </div>
+        </div>
+      </div>
+      <div class="row-md" ng-class="{ 'has-error' : (model.passwordForm.new_password.$touched &amp;&amp; model.passwordForm.new_password.$invalid) || model.errors.new_password }">
+        <label for="new_password" class="col-2 control-label ng-binding">
+          New password
+        </label>
+        <div class="col-5">
+          <input type="password" name="new_password" ng-model="model.password.new_password" class="form-input-text size-sm ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-minlength" required="" ng-minlength="6">
+          <div class="help-block ng-active ng-hide" ng-messages="model.passwordForm.new_password.$error" ng-show="model.passwordForm.new_password.$touched">
+            <!-- ngMessage: required --><p ng-message="required" class="ng-binding ng-scope">Required</p>
+            <!-- ngMessage: minlength -->
+          </div>
+          <div class="help-block ng-hide" ng-show="model.errors.new_password">
+            <!-- ngRepeat: error in model.errors.new_password -->
+          </div>
+        </div>
+      </div>
+      <div class="row-md" ng-class="{ 'has-error' : (model.passwordForm.confirm_password.$touched &amp;&amp; model.passwordForm.confirm_password.$invalid) || model.errors.confirm_password }">
+        <label for="confirm_password" class="col-2 control-label ng-binding">
+          Confirm password
+        </label>
+        <div class="col-5">
+          <input type="password" name="confirm_password" ng-model="model.password.confirm_password" class="form-input-text size-sm ng-pristine ng-untouched ng-empty ng-valid-validator ng-invalid ng-invalid-required" required="" ui-validate=" '$value==model.password.new_password' ">
+          <div class="help-block ng-active ng-hide" ng-messages="model.passwordForm.confirm_password.$error" ng-show="model.passwordForm.confirm_password.$touched">
+            <!-- ngMessage: required --><p ng-message="required" class="ng-binding ng-scope">Required</p>
+            <!-- ngMessage: validator -->
+          </div>
+          <div class="help-block ng-hide" ng-show="model.errors.confirm_password">
+            <!-- ngRepeat: error in model.errors.password -->
+          </div>
+        </div>
+      </div>
+      <div class="row-md">
+        <div class="col-2"></div>
+        <div class="col-5">
+          <button type="submit" ng-click="model.changePassword()" ladda-button="model.submitting" data-style="slide-down" class="button primary-action size-md ladda-button ng-scope" translate="general.forms.buttons.update">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</ng-include>
+<hr class="size-lg ng-scope">
+
+<div ng-show="!viewData.anyBankAccountsRequireDocuments" class="ng-scope">
+  <!-- ngInclude: 'funding/bank-account-section.html' --><div ng-include="'funding/bank-account-section.html'" class="ng-scope"><div class="row-md funding-method-container ng-scope" data-ng-show="viewData.bankAccountsLoaded">
+
+  <div class="col-3">
+    <h4 class="inline-header-md">Bank accounts</h4>
+  </div>
+
+  <div class="col-9">
+
+    <div data-ng-show="bankAccounts.length > 0" class="">
+      <p>
+        Wealthsimple investment accounts can accept fund transfers from bank accounts that are in your name and that have been verified by our compliance department. Here's what we have on file for you:
+      </p>
+
+      <table class="table-opaque">
+        <thead>
+          <tr>
+            <th class="status-column"></th>
+            <th>Bank</th>
+            <th>Institution</th>
+            <th>Transit</th>
+            <th>Account</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ngRepeat: bankAccount in bankAccounts --><tr ng-repeat="bankAccount in bankAccounts" class="ng-scope">
+            <td ng-class="['status-column', bankAccount.status_category]" class="status-column success"></td>
+            <td class="ng-binding">CIBC</td>
+            <td class="ng-binding">010</td>
+            <td class="ng-binding">***4582</td>
+            <td class="ng-binding">***8698</td>
+            <td ng-switch="bankAccount.status">
+              <!-- ngSwitchWhen: verified --><span ng-switch-when="verified" class="ng-scope">Verified</span><!-- end ngSwitchWhen: -->
+              <!-- ngSwitchWhen: document_required -->
+              <!-- ngSwitchDefault:  -->
+            </td>
+          </tr><!-- end ngRepeat: bankAccount in bankAccounts -->
+        </tbody>
+      </table>
+      <p ng-if="transfers" class="ng-scope">
+      <%= link_to "+ Add a Bank Account", addbank_path, :class => "table-link" %>
+    </p>
+    </div>
+
+  </div>
+
+</div></div>
+</div>
+
+<hr class="size-lg ng-scope">
+<!-- ngIf: model.mintEnabled --><div ng-if="model.mintEnabled" class="ng-scope">
+  <!-- ngInclude: undefined --><ng-include src="'core/settings/partials/mint.html'" class="ng-scope"><div class="row-md ng-scope">
+  <div class="col-2">
+    <h4 class="inline-header-md ng-binding">Mint</h4>
+  </div>
+  <div class="col-10">
+    <form name="model.mintForm" class="form-inline size ng-pristine ng-valid" id="mint_update">
+      <p translate="settings.mint.description" translate-values="{company: nav.wsContact.companyName, link: nav.location.help('articles/218470258-Add-your-Wealthsimple-account-to-Mint') }" class="ng-scope">Wealthsimple supports secure read-only access to sync with Mint, read our <a href="http://help.wealthsimple.com/hc/en-us/articles/218470258-Add-your-Wealthsimple-account-to-Mint">full instructions</a> on connecting with Mint.</p>
+      <table class="table-bordered" ng-show="model.mint.mint_access_enabled &amp;&amp; model.mint.mint_access_token" style="">
+        <tbody><tr>
+          <th class="base-padding text-right ng-binding">Username:</th>
+          <td class="base-padding ng-binding">aideyan@live.ca</td>
+        </tr>
+        <tr>
+          <th class="base-padding text-right ng-binding">Mint access token:</th>
+          <td class="base-padding ng-binding">tz1U8GnEL1nWmRNz1BKgJg</td>
+        </tr>
+      </tbody></table>
+      <label class="checkbox-container base-padding-top ng-binding">
+        <div class="checkbox-fancy checked" style="position: relative;"><input type="checkbox" ng-model="model.mint.mint_access_enabled" class="ng-pristine ng-untouched ng-valid ng-not-empty" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+        Allow Mint to read my Wealthsimple data
+      </label>
+      <button ng-click="model.updateMint()" ladda-button="model.submitting" data-style="slide-down" class="button primary-action size-md ladda-button base-padding-top ng-scope" translate="general.forms.buttons.update">Update</button>
+    </form>
+  </div>
+</div>
+</ng-include>
+  <hr class="size-lg">
+</div><!-- end ngIf: model.mintEnabled -->
+<!-- ngInclude: undefined --><ng-include src="'core/settings/partials/notifications.html'" class="ng-scope"><div class="row-md ng-scope">
+  <div class="col-2">
+    <h4 class="inline-header-md ng-binding">Notifications</h4>
+  </div>
+  <div class="col-10">
+    <form name="model.notificationForm" class="ng-pristine ng-valid">
+      <label class="checkbox-container base-padding-bottom ng-binding">
+        <div class="checkbox-fancy checked" style="position: relative;"><input type="checkbox" name="email_updates" ng-model="user.email_updates" class="ng-pristine ng-untouched ng-valid ng-not-empty" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+        I would like to receive email updates from Wealthsimple.
+      </label>
+      <button type="submit" class="button primary-action ng-binding" ng-click="model.updateNotifications()">
+        Update
+      </button>
+    </form>
+  </div>
+</div>
+</ng-include>
+<hr class="size-lg ng-scope">
+<!-- ngInclude: undefined --><ng-include src="'core/settings/partials/withdrawals.html'" class="ng-scope"><div class="row-md ng-scope">
+  <div class="col-2">
+    <h4 class="inline-header-md ng-binding">Withdrawals</h4>
+  </div>
+  <div class="col-10">
+    <p translate="settings.withdrawals.description" translate-values="{tel: nav.wsContact.supportTel, phone: nav.wsContact.supportPhone, email: nav.wsContact.supportEmail}" class="ng-scope">Please call your Wealth Concierge at <a href="tel:+18555108948">+1 (855) 510-8948</a> or email <a href="mailto:support@wealthsimple.com">support@wealthsimple.com</a> to make a withdrawal.</p>
+  </div>
+</div>
+</ng-include>
+<hr class="size-lg ng-scope">
+<!-- ngInclude: undefined --><ng-include src="'core/settings/partials/investment.html'" class="ng-scope"><div class="row-md ng-scope">
+  <div class="col-2">
+    <h4 class="inline-header-md ng-binding">Investment Profile</h4>
+  </div>
+  <div class="col-10">
+    <p translate="settings.investment.description" translate-values="{tel: nav.wsContact.supportTel, phone: nav.wsContact.supportPhone, email: nav.wsContact.supportEmail}" class="ng-scope">If there have been material changes to your employment, financial condition, and/or family status, please call your Wealth Concierge at <a href="tel:+18555108948">+1 (855) 510-8948</a> or email <a href="mailto:support@wealthsimple.com">support@wealthsimple.com</a> as soon as possible. Your Wealth Concierge will determine if any changes to your investor profile are appropriate.</p>
+  </div>
+</div>
+</ng-include>
+<hr class="size-lg ng-scope">
+<!-- ngInclude: undefined --><ng-include src="'core/settings/partials/documents.html'" class="ng-scope"><div class="row-md ng-scope">
+  <div class="col-2">
+    <h4 class="inline-header-md ng-binding">Documents</h4>
+  </div>
+  <div class="col-10">
+    <p class="ng-binding">
+      View the documents associated with your account:
+      </p><ul>
+        <li><a href="/ips/new" target="_blank" class="ng-binding">Investor Policy Statement (PDF)</a></li>
+        <li><a href="/investment-management-agreement.pdf" target="_blank" class="ng-binding">Investment Management Agreement (PDF)</a></li>
+        <li><a ng-href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_account_agreements.pdf" target="_blank" class="ng-binding" href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_account_agreements.pdf">Shareowner Account Agreements (PDF)</a></li>
+        <li><a ng-href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_relationship_disclosure.pdf" target="_blank" class="ng-binding" href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_relationship_disclosure.pdf">ShareOwner Relationship Disclosure (PDF)</a></li>
+        <!-- ngIf: model.hasRRSP(portfolios) --><li ng-if="model.hasRRSP(portfolios)" class="ng-scope"><a ng-href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_rrsp_declaration_of_trust.pdf" target="_blank" class="ng-binding" href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_rrsp_declaration_of_trust.pdf">RRSP Declaration of Trust (PDF)</a></li><!-- end ngIf: model.hasRRSP(portfolios) -->
+        <!-- ngIf: model.hasTFSA(portfolios) --><li ng-if="model.hasTFSA(portfolios)" class="ng-scope"><a ng-href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_tfsa_declaration_of_trust.pdf" target="_blank" class="ng-binding" href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_tfsa_declaration_of_trust.pdf">TFSA Declaration of Trust (PDF)</a></li><!-- end ngIf: model.hasTFSA(portfolios) -->
+      </ul>
+    <p></p>
+    <!-- ngIf: model.hasRRSP(portfolios) || model.hasTFSA(portfolios) --><div ng-if="model.hasRRSP(portfolios) || model.hasTFSA(portfolios)" class="ng-scope">
+      <p class="ng-binding">
+        To assign a beneficiary, please print and fill out the following forms:
+        </p><ul>
+          <!-- ngIf: model.hasRRSP(portfolios) --><li ng-if="model.hasRRSP(portfolios)" class="ng-scope"><a ng-href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_rrsp_beneficiary_form.pdf" target="_blank" class="ng-binding" href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_rrsp_beneficiary_form.pdf">RRSP form (PDF)</a></li><!-- end ngIf: model.hasRRSP(portfolios) -->
+          <!-- ngIf: model.hasTFSA(portfolios) --><li ng-if="model.hasTFSA(portfolios)" class="ng-scope"><a ng-href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_tfsa_beneficiary_form.pdf" target="_blank" class="ng-binding" href="https://s3.amazonaws.com/wealthsimple/compliance_documents/so_tfsa_beneficiary_form.pdf">TFSA form (PDF)</a></li><!-- end ngIf: model.hasTFSA(portfolios) -->
+        </ul>
+      <p></p>
+      <p class="ng-binding">Mail your signed form to us at:</p>
+      <p class="ng-binding">
+        Wealthsimple<br>
+        c/o Canadian Shareowner Investments Inc.<br>
+        170 University Ave #704<br>
+        Toronto, ON M5H 3B3
+      </p>
+    </div><!-- end ngIf: model.hasRRSP(portfolios) || model.hasTFSA(portfolios) -->
+  </div>
+</div>
+</ng-include>
+<hr class="size-lg ng-scope">
+<!-- ngInclude: undefined --><ng-include src="'core/settings/partials/cancel.html'" class="ng-scope"><div class="row-md ng-scope">
+  <div class="col-2">
+    <h4 class="inline-header-md ng-binding">Cancel your account</h4>
+  </div>
+  <div class="col-10">
+    <p translate="settings.cancel.description" translate-values="{tel: nav.wsContact.supportTel, phone: nav.wsContact.supportPhone}" class="ng-scope">Please call your Wealth Concierge at <a href="tel:+18555108948">+1 (855) 510-8948</a> to cancel your account.</p>
+  </div>
+</div>
+</ng-include>

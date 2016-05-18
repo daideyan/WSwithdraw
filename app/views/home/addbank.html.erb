@@ -1,0 +1,40 @@
+<div class=".centered-container ng-scope">
+  <ng-switch on="model.category">
+    <!-- ngSwitchWhen: BANK_DOC --><div ng-switch-when="BANK_DOC" class="ng-scope">
+      <!-- ngInclude: undefined --><ng-include src="'uploads/partials/bank_statement.html'" class="ng-scope"><h2 class="ng-binding ng-scope">Add a bank account</h2>
+
+<div class="ng-binding ng-scope">
+  Please upload one of the following:
+  <ul>
+    <li ng-show="false" class="ng-binding ng-hide">A PDF or image copy of your full bank statement</li>
+    <li ng-show="false" class="ng-binding ng-hide">An image of a cleared cheque</li>
+    <li ng-hide="false" class="ng-binding">The first page of your bank statement</li>
+    <li ng-hide="false" class="ng-binding">An image of a void cheque</li>
+    <li translate="uploads.bank-docs.doc-types.UploadedDocument::BankScreenshot.description" class="ng-scope">A screenshot of your online banking account clearly showing your full name, bank’s logo, <strong>complete account and transit number</strong>, and the current balance in your account</li>
+  </ul>
+</div>
+</ng-include>
+    </div><!-- end ngSwitchWhen: -->
+    <!-- ngSwitchDefault:  -->
+  </ng-switch>
+  <div class="direct-upload">
+    <div class="progress">
+      <div class="progress-bar" style="width:%" ng-class="{'error': model.hasError || model.isInvalidFileType}"></div>
+    </div>
+    <form class="upload-form base-margin-bottom-x2 ng-pristine ng-valid" enctype="multipart/form-data" accept-charset="UTF-8" method="post">
+      <div class=".upload-error ng-binding ng-hide" ng-show="model.hasError">
+        There was an issue uploading the provided document. Please try again later.
+      </div>
+      <div class=".upload-error ng-binding ng-hide" ng-show="model.isInvalidFileType">
+        The document type you uploaded is not supported. Try using a PDF or image file (jpeg, png)
+      </div>
+      <input type="file" ngf-select="uploadFile($file, selected)" accept="image/*,application/pdf" c2cf="">
+    </form>
+  </div>
+  <p translate="uploads.help.questions" translate-values="{link: nav.location.submitRequest}" class="ng-scope">Questions? Send us <a href="http://help.wealthsimple.com/hc/en-us/requests/new" target:"_blank"="">a note</a> for help.</p>
+  <p ng-show="true" class="ng-binding">
+    If you do not have access to any of the things listed above, you can mail in a $1 cheque to:
+    </p><p class="ng-binding">860 Richmond Street West, 3rd floor<br>Toronto, ON, M6J 1C9, Canada</p>
+  <p></p>
+  </div>
+  </div>

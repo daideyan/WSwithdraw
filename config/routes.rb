@@ -14,5 +14,11 @@ get "withdraw" => "home#withdraw"
 
 get "confirm" => "home#confirm"
 
+get "addfunds" => "home#addfunds"
+
+get "addbank" => "home#addbank"
+
+get "settings" => "home#settings"
+
 
 end

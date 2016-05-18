@@ -1,0 +1,166 @@
+<div ng-controller="WS.FundingController" class="ng-scope">
+<!-- ngInclude: 'funding/index.html' --><div ng-include="'funding/index.html'" class="ng-scope"><h2 class="ng-binding ng-scope">Hello, David!</h2>
+
+<p class="ng-binding ng-scope">Thanks for setting up your account. We're now ready for you to transfer funds to your TFSA! Fund your account using your chequing account or transfer an existing account to Wealthsimple.</p>
+<!-- ngInclude: 'funding/eft-section.html' --><div ng-show="portfolio.eft_eligible" ng-include="'funding/eft-section.html'" class="ng-scope"><div class="row-md funding-method-container ng-scope">
+
+  <div class="col-3">
+    <h4 class="inline-header-md">Electronic funds transfers</h4>
+  </div>
+
+  <div class="col-9">
+    <p>
+      This is the fastest and easiest way to transfer and start investing your funds. Enter the amount and frequency of contributions below to start a new transfer.
+    </p>
+
+    <!-- ngInclude: 'funding/eft-form.html' --><div ng-include="'funding/eft-form.html'" class="ng-scope"><form name="fundingForm" ng-submit="submit(fundingForm)" novalidate="" class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-parse">
+  <div class="row-sm form-row">
+    <div class="col-3">
+      <input class="form-input-text size-sm ng-pristine ng-invalid ng-invalid-required ng-touched" type="text" name="amount" placeholder="$0" ng-model="fundingRequest.amount" money="" required="" min-value="1" max-value="1000000" focus="" autocomplete="off">
+      <!-- ngIf: fundingForm.amount.$dirty -->
+    </div>
+    <div class="col-3">
+      <select class="form-control size-sm ng-pristine ng-untouched ng-valid" name="frequency" ng-model="fundingRequest.frequency">
+        <option value="monthly" selected="">Every month</option>
+        <option value="every_other_week">Every two weeks</option>
+        <option value="weekly">Every week</option>
+        <option value="once">Just this once</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <select class="form-control size-sm ng-pristine ng-untouched ng-valid" name="frequency" ng-model="fundingRequest.frequency">
+        <option value="monthly" selected="">Funding Source</option>
+        <option value="every_other_week">CIBC ****3213</option>
+        <option value="weekly">RBC ****3052</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <button class="button primary-action size-md ng-binding" type="submit" ng-disabled="fundingForm.$invalid || fundingForm.submitting" disabled="disabled"> Submit </button>
+    </div>
+  </div>
+</form></div>
+
+    <table class="table-opaque" ng-show="efts.length > 0 || pacs.length > 0">
+      <thead>
+        <tr>
+          <th class="status-column"></th>
+          <th>Creation Date</th>
+          <th>From</th>
+          <th>Amount</th>
+          <th>Frequency</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ngRepeat: pac in pacs -->
+        <!-- ngRepeat: eft in efts --><tr ng-repeat="eft in efts" class="ng-scope">
+          <td ng-class="['status-column', eft.status_category]" class="status-column success">
+          </td>
+          <td class="ng-binding">Apr 17, 2016</td>
+          <td class="ng-binding">CIBC</td>
+          <td class="ng-binding">$100</td>
+          <td>One time</td>
+          <td class="ng-binding">Processed</td>
+        </tr><!-- end ngRepeat: eft in efts --><tr ng-repeat="eft in efts" class="ng-scope">
+          <td ng-class="['status-column', eft.status_category]" class="status-column success">
+          </td>
+          <td class="ng-binding">Mar 16, 2016</td>
+          <td class="ng-binding">CIBC</td>
+          <td class="ng-binding">$50</td>
+          <td>One time</td>
+          <td class="ng-binding">Processed</td>
+        </tr><!-- end ngRepeat: eft in efts --><tr ng-repeat="eft in efts" class="ng-scope">
+          <td ng-class="['status-column', eft.status_category]" class="status-column success">
+          </td>
+          <td class="ng-binding">Mar 15, 2016</td>
+          <td class="ng-binding">CIBC</td>
+          <td class="ng-binding">$50</td>
+          <td>One time</td>
+          <td class="ng-binding">Processed</td>
+        </tr><!-- end ngRepeat: eft in efts -->
+      </tbody>
+    </table>
+
+    <!-- ngInclude: 'funding/promo-section.html' --><div ng-include="'funding/promo-section.html'" class="ng-scope"><div class="promo-section ng-scope ng-hide" ng-show="viewData.eftsAndPacsLoaded &amp;&amp; userPromos.length > 0 &amp;&amp; efts.length === 0 &amp;&amp; pacs.length === 0">
+  <!-- TODO: eventually build a UI to handle multiple promos per user -->
+  <p class="promo-message ng-binding"></p>
+</div></div>
+  </div>
+</div></div>
+<div ng-show="!viewData.anyBankAccountsRequireDocuments" class="ng-scope">
+  <!-- ngInclude: 'funding/bank-account-section.html' --><div ng-include="'funding/bank-account-section.html'" class="ng-scope"><div class="row-md funding-method-container ng-scope" data-ng-show="viewData.bankAccountsLoaded">
+
+  <div class="col-3">
+    <h4 class="inline-header-md">Bank accounts</h4>
+  </div>
+
+  <div class="col-9">
+
+    <div data-ng-show="bankAccounts.length > 0" class="">
+      <p>
+        Wealthsimple investment accounts can accept fund transfers from bank accounts that are in your name and that have been verified by our compliance department. Here's what we have on file for you:
+      </p>
+
+      <table class="table-opaque">
+        <thead>
+          <tr>
+            <th class="status-column"></th>
+            <th>Bank</th>
+            <th>Institution</th>
+            <th>Transit</th>
+            <th>Account</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ngRepeat: bankAccount in bankAccounts --><tr ng-repeat="bankAccount in bankAccounts" class="ng-scope">
+            <td ng-class="['status-column', bankAccount.status_category]" class="status-column success"></td>
+            <td class="ng-binding">CIBC</td>
+            <td class="ng-binding">010</td>
+            <td class="ng-binding">***4582</td>
+            <td class="ng-binding">***8698</td>
+            <td ng-switch="bankAccount.status">
+              <!-- ngSwitchWhen: verified --><span ng-switch-when="verified" class="ng-scope">Verified</span><!-- end ngSwitchWhen: -->
+              <!-- ngSwitchWhen: document_required -->
+              <!-- ngSwitchDefault:  -->
+            </td>
+          </tr><!-- end ngRepeat: bankAccount in bankAccounts -->
+        </tbody>
+      </table>
+      <p ng-if="transfers" class="ng-scope">
+      <%= link_to "+ Add a Bank Account", addbank_path, :class => "table-link" %>
+    </p>
+    </div>
+
+  </div>
+
+</div></div>
+</div>
+<!-- ngInclude: 'funding/transfer-section.html' --><div ng-include="'funding/transfer-section.html'" class="ng-scope"><div class="row-md funding-method-container ng-scope">
+  <div class="col-3">
+    <h4 class="inline-header-md">Transfer existing accounts</h4>
+  </div>
+  <div class="col-9">
+    <p class="ng-binding">
+      If you already have a TFSA account with another financial institution, you can transfer it to Wealthsimple.
+    </p>
+    <!-- ngIf: !transfers -->
+    <!-- ngIf: transfers --><table ng-if="transfers" class="table-opaque ng-scope">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Institution</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ngRepeat: transfer in transfers -->
+      </tbody>
+    </table><!-- end ngIf: transfers -->
+    <!-- ngIf: transfers --><p ng-if="transfers" class="ng-scope">
+      <a href="/app/portfolios/tfsa-8r-jo_-3/transfer/new" class="table-link">+ Set up transfer</a>
+    </p><!-- end ngIf: transfers -->
+  </div>
+</div></div></div>
+</div></div>

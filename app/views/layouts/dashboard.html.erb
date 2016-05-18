@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wealthsimple | Smart investing</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div ui-view="" class="ng-scope"><!-- ngIf: user --><div ng-if="user" ng-class="[{'side-nav-present': nav.showSideNav, 'side-nav-hidden': !nav.showSideNav, 'no-footer': !nav.showFooter}, 'logged-in', nav.bodyClass.controllerClass, nav.bodyClass.actionClass]" class="ng-scope side-nav-present logged-in portfolios" style="">
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/top/top-nav.html'" class="ng-scope"><nav class="main-nav ng-scope">
+  <div ng-class="{'container-fluid-padded': nav.showSideNav, 'container-padded': !nav.showSideNav}" class="container-fluid-padded">
+    <a ng-href="/" class="main-nav-logo" href="/">Wealthsimple</a>
+    <!-- ngIf: user.id --><!-- ngInclude: undefined --><ng-include src="'core/ws/partials/top/logged-in.html'" ng-if="user.id" class="ng-scope"><ul class="main-nav-navigation-items show-md ng-scope">
+  <!-- ngRepeat: link in nav.loggedInLinks --><li class="main-nav-navigation-item ng-scope" ng-repeat="link in nav.loggedInLinks">
+    <a ng-href="/app/referrals" ng-class="link.clazz" target="" class="ng-binding button primary-action" href="/app/referrals">Invite friends</a>
+  </li><!-- end ngRepeat: link in nav.loggedInLinks -->
+</ul>
+</ng-include><!-- end ngIf: user.id -->
+    <!-- ngIf: !user.id -->
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/top/hamburger.html'" class="ng-scope"><a class="main-nav-hamburger hamburger-icon hide-md ng-scope" data-hamburger-action="open">
+  <div class="hamburger-icon-lines">
+    <div class="hamburger-icon-line"></div>
+    <div class="hamburger-icon-line"></div>
+    <div class="hamburger-icon-line"></div>
+  </div>
+</a>
+<div class="hamburger-menu ng-scope">
+  <div class="hamburger-button-close" data-hamburger-action="close"></div>
+  <!-- ngIf: user.id --><div class="hamburger-menu-items ng-scope" ng-if="user.id">
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/side/side-nav-portfolios.html'" class="ng-scope"><!-- ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/tfsa-8r-jo_-3" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding active">TFSA</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id --><ul class="nav portfolio ng-scope" ng-if="portfolio.id === nav.currentPortfolio.id">
+    <li ng-show="portfolio.funded || (portfolio.contribution_instructions_eligible &amp;&amp; portfolio.application_completed)" class="">
+    <%= link_to "Performance", dashboard_path, :class => "performance active" %>
+    </li>
+    <li ng-show="portfolio.has_activities" class="">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/activities" ng-class="['activity', {active: nav.sideLinkClasses.activity}]" href="/portfolios/tfsa-8r-jo_-3/activities" class="activity">Activity</a>
+    </li>
+    <%= link_to "Add Funds", addfunds_path, :class => "ng-scope add-funds" %>
+    <li>
+      <a ng-href="/app/portfolios/tfsa-8r-jo_-3/plan" ng-class="['plan', {active: nav.sideLinkClasses.plan}]" href="/app/portfolios/tfsa-8r-jo_-3/plan" class="plan">Plan</a>
+    </li>
+  </ul><!-- end ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/rrsp-r03q3gmg" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding">RRSP</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios -->
+</ng-include>
+    <!-- ngRepeat: link in nav.sideLinks -->
+<%= link_to "Settings", settings_path, :class => "ng-binding ng-scope" %>
+    <!-- end ngRepeat: link in nav.sideLinks --><a ng-repeat="link in nav.sideLinks" ng-href="http://help.wealthsimple.com/hc/en-us" class="ng-binding ng-scope" href="http://help.wealthsimple.com/hc/en-us">FAQ</a><!-- end ngRepeat: link in nav.sideLinks --><a ng-repeat="link in nav.sideLinks" ng-href="/logout" class="ng-binding ng-scope" href="/logout">Log out</a><!-- end ngRepeat: link in nav.sideLinks -->
+  </div><!-- end ngIf: user.id -->
+  <!-- ngIf: !user.id -->
+</div>
+</ng-include>
+  </div>
+</nav>
+</ng-include>
+  <div class="content-and-side-nav">
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/side/side-nav.html'" ng-show="nav.showSideNav" class="ng-scope"><div class="side-nav ng-scope">
+  <ul class="nav">
+    <!-- ngInclude: undefined --><ng-include src="'common/advisor-badge/advisor-badge.html'" class="ng-scope"><!-- ngIf: w4a.id -->
+</ng-include>
+  </ul>
+  <ul class="nav portfolios">
+    <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/side/side-nav-portfolios.html'" class="ng-scope"><!-- ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/tfsa-8r-jo_-3" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding active">TFSA</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id --><ul class="nav portfolio ng-scope" ng-if="portfolio.id === nav.currentPortfolio.id">
+    <li ng-show="portfolio.funded || (portfolio.contribution_instructions_eligible &amp;&amp; portfolio.application_completed)" class="">
+    <%= link_to "Performance", dashboard_path, :class => "performance active" %>
+    </li>
+    <li ng-show="portfolio.has_activities" class="">
+      <a ng-href="/portfolios/tfsa-8r-jo_-3/activities" ng-class="['activity', {active: nav.sideLinkClasses.activity}]" href="/portfolios/tfsa-8r-jo_-3/activities" class="activity">Activity</a>
+    </li>
+    <li ng-show="portfolio.funding_instructions_eligible" class="">
+	<%= link_to "Add Funds", addfunds_path, :class => "ng-scope add-funds" %>
+    </li>
+    <li>
+      <a ng-href="/app/portfolios/tfsa-8r-jo_-3/plan" ng-class="['plan', {active: nav.sideLinkClasses.plan}]" href="/app/portfolios/tfsa-8r-jo_-3/plan" class="plan">Plan</a>
+    </li>
+  </ul><!-- end ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios --><li ng-repeat="portfolio in portfolios" class="ng-scope">
+  <div class="portfolio-header">
+    <a href="/app/portfolios/rrsp-r03q3gmg" ng-class="{active: portfolio.id === nav.currentPortfolio.id}" class="ng-binding">RRSP</a>
+  </div>
+  <!-- ngIf: portfolio.id === nav.currentPortfolio.id -->
+</li><!-- end ngRepeat: portfolio in portfolios -->
+</ng-include>
+  </ul>
+  <ul class="nav other-content">
+    <!-- ngRepeat: link in nav.sideLinks --><li ng-repeat="link in nav.sideLinks" class="ng-scope">
+    <%= link_to "Withdraw", withdraw_path, :class => "ng-binding" %>
+    <%= link_to "Settings", settings_path, :class => "ng-binding ng-scope" %>
+    </li><!-- end ngRepeat: link in nav.sideLinks --><li ng-repeat="link in nav.sideLinks" class="ng-scope">
+      <a ng-href="http://help.wealthsimple.com/hc/en-us" target="" ng-class="{active: link.url == nav.currentUrl}" class="ng-binding" href="http://help.wealthsimple.com/hc/en-us">FAQ</a>
+    </li><!-- end ngRepeat: link in nav.sideLinks --><li ng-repeat="link in nav.sideLinks" class="ng-scope">
+      <a ng-href="/logout" target="" ng-class="{active: link.url == nav.currentUrl}" class="ng-binding" href="/logout">Log out</a>
+    </li><!-- end ngRepeat: link in nav.sideLinks -->
+  </ul>
+  <div class="contact">
+    <div class="header">Questions?</div>
+    <p><a ng-href="tel:+18555108948" class="ng-binding" href="tel:+18555108948">+1 (855) 510-8948</a></p>
+    <p><a ng-href="http://help.wealthsimple.com/hc/en-us/requests/new" target="_blank" href="http://help.wealthsimple.com/hc/en-us/requests/new">Submit a request</a></p>
+  </div>
+</div>
+</ng-include>
+    <div class="content-adjacent-to-side-nav">
+      <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/flash.html'" class="ng-scope">
+</ng-include>
+      <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/notifications.html'" class="ng-scope"></ng-include>
+      <div class="main-content ng-scope">
+      <%= yield %>
+    </div>
+  </div>
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer.html'" ng-show="nav.showFooter" class="ng-scope"><footer class="container-gray main-footer ng-scope">
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer-upper-block.html'" class="ng-scope"><div class="container footer-upper-block ng-scope">
+  <div class="footer-content">
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Invest</li>
+        <li><a ng-href="https://www.wealthsimple.com/why-invest" target="_blank" class="footer-link" href="https://www.wealthsimple.com/why-invest">Why invest</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/how-it-works" target="_blank" class="footer-link" href="https://www.wealthsimple.com/how-it-works">How it works</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/investing-101" target="_blank" class="footer-link" href="https://www.wealthsimple.com/investing-101">Investing 101</a></li>
+        <li><a ng-href="http://help.wealthsimple.com/hc/en-us" target="_blank" class="footer-link" href="http://help.wealthsimple.com/hc/en-us">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>About us</li>
+        <li><a ng-href="https://www.wealthsimple.com/mission" target="_blank" class="footer-link" href="https://www.wealthsimple.com/mission">Our mission</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/team" target="_blank" class="footer-link" href="https://www.wealthsimple.com/team">Our team</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/jobs" target="_blank" class="footer-link" href="https://www.wealthsimple.com/jobs">Jobs</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/press" target="_blank" class="footer-link" href="https://www.wealthsimple.com/press">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Legal</li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/terms" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/terms">Terms of use</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/privacy" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/privacy">Privacy policy</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/disclosure" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/disclosure">Full disclosure</a></li>
+        <li><a ng-href="https://www.wealthsimple.com/legal/file-complaint" target="_blank" class="footer-link" href="https://www.wealthsimple.com/legal/file-complaint">File a complaint</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Learn more</li>
+        <li><a ng-href="http://grow.wealthsimple.com/" class="footer-link" target="_blank" href="http://grow.wealthsimple.com/">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Download the app</li>
+        <li class="app-badge">
+          <a ng-href="https://itunes.apple.com/ca/app/wealthsimple/id948087968?ls=1&amp;mt=8" class="footer-link" target="_blank" href="https://itunes.apple.com/ca/app/wealthsimple/id948087968?ls=1&amp;mt=8">
+            <img ws-src="icons/ios-badge.svg" alt="Download from the App Store" src="https://wealthsimple-ui.s3.amazonaws.com/images/icons/ios-badge.svg">
+          </a>
+        </li>
+        <li class="app-badge">
+          <a ng-href="https://play.google.com/store/apps/details?id=com.wealthsimple" class="footer-link" target="_blank" href="https://play.google.com/store/apps/details?id=com.wealthsimple">
+            <img ws-src="icons/google-play-badge.svg" alt="Get it on Google Play" src="https://wealthsimple-ui.s3.amazonaws.com/images/icons/google-play-badge.svg">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</ng-include>
+  <div class="footer-divider"></div>
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer-lower-block.html'" class="ng-scope"><div class="container footer-lower-block ng-scope">
+  <div class="footer-content">
+    <div class="footer-list-wrapper footer-list-wrapper-contact">
+      <ul class="footer-list">
+        <li>Contact us</li>
+        <li class="footer-list-item-faded">
+          <a href="tel:+18555108948" class="footer-link ng-binding">+1 (855) 510-8948</a>
+        </li>
+        <li class="footer-list-item-faded">
+          <a href="mailto:support@wealthsimple.com" class="footer-link ng-binding">support@wealthsimple.com</a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper footer-list-wrapper-contact-address">
+      <ul class="footer-list">
+        <li>&nbsp;</li>
+        <li class="footer-list-item-faded ng-binding">860 Richmond Street West, 3rd floor</li>
+        <li class="footer-list-item-faded ng-binding">Toronto, ON, M6J 1C9, Canada</li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Language</li>
+        <li>English</li>
+      </ul>
+    </div>
+    <div class="footer-list-wrapper">
+      <ul class="footer-list">
+        <li>Social</li>
+        <li class="footer-social-icon">
+          <a ng-href="https://www.facebook.com/wealthsimple" class="footer-link" target="_blank" href="https://www.facebook.com/wealthsimple">
+            <i class="ss-icon">facebook</i>
+          </a>
+        </li>
+        <li class="footer-social-icon">
+          <a ng-href="https://twitter.com/wealthsimple" class="footer-link" target="_blank" href="https://twitter.com/wealthsimple">
+            <i class="ss-icon">twitter</i>
+          </a>
+        </li>
+        <li class="footer-social-icon">
+          <a ng-href="https://www.linkedin.com/company/wealthsimple" class="footer-link" target="_blank" href="https://www.linkedin.com/company/wealthsimple">
+            <i class="ss-icon">linkedin</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- ngInclude: undefined --><ng-include src="'core/ws/partials/footer/footer-copyright.html'" class="ng-scope"><div class="footer-content footer-copyright ng-scope">
+  <p class="ng-binding">
+    Wealthsimple Financial Inc. is registered as a Portfolio Manager in
+    Ontario, British Columbia, Alberta, Manitoba, Quebec, Saskatchewan,
+    Newfoundland and Labrador, New Brunswick, Nova Scotia, Prince Edward Island,
+    the Northwest Territories, Nunavut, and Yukon. Securities in your account are
+    protected up to $1,000,000 CDN through our brokerage partner, BBS-Securities Inc.
+    See <a ng-href="http://www.cipf.ca/public/cipfcoverage/coveragepolicy.aspx" target="_blank" rel="nofollow" href="http://www.cipf.ca/public/cipfcoverage/coveragepolicy.aspx">www.cipf.ca</a>
+    for more details. By using this website, you accept our Terms of Use and
+    Privacy Policy. Copyright 2016 Wealthsimple Financial Inc.
+  </p>
+  <p>
+    Past performance is no guarantee of future results. Any historical returns,
+    expected returns, or probability projections may not reflect actual future
+    performance. All securities involve risk and may result in loss. We do not
+    provide financial planning services to individual investors. Read our
+    <a ng-href="https://www.wealthsimple.com/legal/disclosure" target="_blank" href="https://www.wealthsimple.com/legal/disclosure">Full disclosure</a>.
+  </p>
+</div>
+</ng-include>
+</div>
+</ng-include>
+</footer>
+</ng-include>
+</div><!-- end ngIf: user -->
+</div>
+
+</body>
+
+</html>
